@@ -20,4 +20,6 @@ Do not add Capacitor plugins, adapters, or speculative interfaces for haptics, f
 
 Do not add `server.url`, cleartext, or other live-reload settings to committed Capacitor config.
 
-Do not run `npx cap add android` or `npx cap add ios` unless a task explicitly asks for platform initialization.
+`android/` is committed native source. Keep Android edits intentional and minimal. After web changes, run `npm run build` then `npx cap sync android` before native testing.
+
+Do not run `npx cap add ios` unless a task explicitly asks for iOS initialization.

@@ -10,6 +10,7 @@
     "typecheck": "tsc -b"
   },
   "dependencies": {
+    "@capacitor/android": "^8.5.0",
     "@capacitor/core": "^8.5.0",
     "phaser": "^3.90.0",
     "react": "^19.2.8",

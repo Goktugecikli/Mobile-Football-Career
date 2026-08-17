@@ -2,7 +2,7 @@
 
 ## Current tree
 
-Only directories that contain bootstrap code are present.
+Only directories that currently contain project code are present.
 
 ```text
 nss-v2/
@@ -10,6 +10,7 @@ nss-v2/
 ├── .github/workflows/       GitHub Actions (CI)
 ├── .gitattributes           Repository line-ending policy (LF)
 ├── .nvmrc                   Authoritative Node.js version
+├── android/                 Capacitor Android platform (committed native source)
 ├── capacitor.config.ts      Capacitor native-shell configuration
 ├── docs/                    Human-readable architecture docs
 │   └── DECISIONS/           ADR-style records (process only, for now)
@@ -28,9 +29,10 @@ nss-v2/
 ├── tsconfig.app.json
 ├── tsconfig.node.json
 ├── vite.config.ts
-├── capacitor.config.ts
 └── eslint.config.js
 ```
+
+Copied web assets under `android/app/src/main/assets/public` are produced by `npx cap sync android` and are gitignored.
 
 ## Source files today
 
