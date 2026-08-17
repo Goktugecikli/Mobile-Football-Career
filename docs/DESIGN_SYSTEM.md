@@ -1,8 +1,6 @@
 # Design system
 
-Visual decisions live in `src/styles/tokens.css`. That file is the single authoritative place for colors, typography, spacing, radii, shadows, motion, z-index, and breakpoints.
-
-The current tokens are a starter mechanism, not a finished game theme. Do not invent a full product look during foundation work.
+Visual and mobile layout decisions live in `src/styles/tokens.css` and `src/styles/global.css`. Tokens are a starter mechanism, not a finished game theme.
 
 ## Token groups
 
@@ -11,11 +9,47 @@ The current tokens are a starter mechanism, not a finished game theme. Do not in
 | Color | `--color-bg`, `--color-text`, `--color-accent` | Surfaces, copy, emphasis, danger, focus |
 | Typography | `--font-family-sans`, `--font-size-md`, `--font-weight-semibold` | Text style |
 | Spacing | `--space-1` … `--space-8` | Padding, margin, gap |
+| Layout / viewport | `--layout-min-height`, `--layout-padding-*` | Full-height shell and screen padding |
+| Safe area | `--safe-area-inset-*`, `--layout-padding-*` | Notch, home indicator, edge insets |
 | Radii | `--radius-sm`, `--radius-md` | Corners |
 | Shadows | `--shadow-sm`, `--shadow-md` | Elevation |
 | Motion | `--duration-fast`, `--easing-standard` | Transitions |
 | Z-index | `--z-base`, `--z-overlay` | Stacking |
 | Breakpoints | `--breakpoint-sm` (480px), `--breakpoint-md` (768px), `--breakpoint-lg` (1024px) | Layout thresholds |
+
+## Mobile viewport ownership
+
+- `index.html` sets `viewport-fit=cover` for native WebView edge-to-edge behavior.
+- `src/styles/global.css` owns document-level viewport rules: `100dvh` minimum height, horizontal overflow prevention, and overscroll containment.
+- `src/app/AppShell.tsx` is the application root flex column for future headers, scroll regions, and footers.
+- Screen content uses `--layout-padding-*` tokens rather than ad-hoc viewport math.
+
+Do not scatter viewport calculations across components or JavaScript.
+
+## Safe-area ownership
+
+Platform `env(safe-area-inset-*)` values are mapped once in `src/styles/tokens.css` to semantic tokens:
+
+- `--safe-area-inset-top`, `-right`, `-bottom`, `-left`
+- `--layout-padding-top`, `-right`, `-bottom`, `-left` combine base spacing with safe-area insets
+
+Components consume `--layout-padding-*` or `--safe-area-inset-*`. Do not repeat `env(safe-area-inset-*)` in component CSS.
+
+No Capacitor safe-area plugin is used; CSS environment variables are sufficient at this stage.
+
+## Orientation policy ownership
+
+Authoritative location: `src/config/orientationPolicy.ts`.
+
+No product orientation lock is defined yet. Native platform defaults from Capacitor generation remain until a task explicitly sets a lock in that file and the corresponding native configuration.
+
+Web layouts must work in portrait and landscape. Do not scatter orientation assumptions across React, CSS, Phaser, or native files.
+
+## Phaser resize ownership
+
+- Game resolution and aspect ratio come from `appConfig.game` only.
+- React sets `--game-aspect-ratio` on the host viewport from that config.
+- Phaser `Scale.FIT` and parent `ResizeObserver` refresh live inside `src/game/createPhaserGameSession.ts`. React must not access Phaser scale or scene internals.
 
 ## Usage rules
 

@@ -13,6 +13,7 @@ export function createPhaserGameSession(config: GameHostConfig): GameSession {
 
 class PhaserGameSession implements GameSession {
   private game: Phaser.Game | undefined;
+  private resizeObserver: ResizeObserver | undefined;
   private readonly config: GameHostConfig;
 
   public constructor(config: GameHostConfig) {
@@ -43,11 +44,18 @@ class PhaserGameSession implements GameSession {
       });
 
       this.game = game;
+      this.resizeObserver = new ResizeObserver(() => {
+        game.scale.refresh();
+      });
+      this.resizeObserver.observe(parent);
+
       game.events.once(Phaser.Core.Events.READY, () => {
         onEvent?.({ type: 'ready' });
       });
     } catch (cause) {
       this.game = undefined;
+      this.resizeObserver?.disconnect();
+      this.resizeObserver = undefined;
       const error = new AppError('Failed to initialize the Phaser host.', {
         code: ErrorCode.GAME_INIT_FAILED,
         category: ErrorCategory.GAME,
@@ -61,6 +69,9 @@ class PhaserGameSession implements GameSession {
   }
 
   public destroy(): void {
+    this.resizeObserver?.disconnect();
+    this.resizeObserver = undefined;
+
     if (this.game === undefined) {
       return;
     }

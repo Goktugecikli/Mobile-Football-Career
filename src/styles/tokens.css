@@ -44,6 +44,21 @@
   --duration-normal: 250ms;
   --easing-standard: cubic-bezier(0.2, 0, 0, 1);
 
+  /* Layout and viewport */
+  --layout-min-height: 100dvh;
+
+  --safe-area-inset-top: env(safe-area-inset-top, 0px);
+  --safe-area-inset-right: env(safe-area-inset-right, 0px);
+  --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
+  --safe-area-inset-left: env(safe-area-inset-left, 0px);
+
+  --layout-padding-inline: var(--space-6);
+  --layout-padding-block: var(--space-6);
+  --layout-padding-top: calc(var(--layout-padding-block) + var(--safe-area-inset-top));
+  --layout-padding-right: calc(var(--layout-padding-inline) + var(--safe-area-inset-right));
+  --layout-padding-bottom: calc(var(--layout-padding-block) + var(--safe-area-inset-bottom));
+  --layout-padding-left: calc(var(--layout-padding-inline) + var(--safe-area-inset-left));
+
   --z-base: 0;
   --z-raised: 10;
   --z-overlay: 100;

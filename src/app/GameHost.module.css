@@ -1,20 +1,36 @@
 .host {
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: var(--space-3);
+  min-height: 0;
+  min-width: 0;
 }
 
 .status {
   margin: 0;
+  flex-shrink: 0;
   color: var(--color-text-muted);
   font-size: var(--font-size-sm);
 }
 
 .viewport {
+  position: relative;
   width: min(100%, 22.5rem);
+  max-height: min(60dvh, 100%);
+  margin-inline: auto;
+  aspect-ratio: var(--game-aspect-ratio);
   overflow: hidden;
   background: var(--color-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-sm);
+}
+
+@media (orientation: landscape) {
+  .viewport {
+    width: auto;
+    height: min(60dvh, 100%);
+    max-width: min(100%, 22.5rem);
+  }
 }

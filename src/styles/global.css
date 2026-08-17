@@ -6,13 +6,8 @@
   box-sizing: border-box;
 }
 
-html,
-body,
-#root {
-  min-height: 100%;
-}
-
 html {
+  height: 100%;
   font-family: var(--font-family-sans);
   font-size: var(--font-size-md);
   line-height: var(--line-height-normal);
@@ -21,14 +16,22 @@ html {
   background: var(--color-bg);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
+  min-height: var(--layout-min-height);
+  overflow-x: hidden;
+  overscroll-behavior: none;
 }
 
 #root {
-  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  min-height: var(--layout-min-height);
+  min-width: 0;
 }
 
 :focus-visible {

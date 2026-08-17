@@ -1,10 +1,13 @@
 import { AppErrorBoundary } from './AppErrorBoundary';
+import { AppShell } from './AppShell';
 import { BootstrapScreen } from './BootstrapScreen';
 
 export function App() {
   return (
     <AppErrorBoundary>
-      <BootstrapScreen />
+      <AppShell>
+        <BootstrapScreen />
+      </AppShell>
     </AppErrorBoundary>
   );
 }

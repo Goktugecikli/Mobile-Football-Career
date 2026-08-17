@@ -54,3 +54,5 @@ Native identity lives in `capacitor.config.ts`:
 - Web assets: Vite `dist` output
 
 Web-to-native copy uses `npm run build` then `npx cap sync android` or `npx cap sync ios`. Native workflow is documented in `docs/DEVELOPMENT_GUIDE.md`. iOS build verification requires macOS and Xcode.
+
+Mobile viewport, safe-area, and orientation ownership are documented in `docs/DESIGN_SYSTEM.md`. Phaser resize handling stays inside the game session implementation.

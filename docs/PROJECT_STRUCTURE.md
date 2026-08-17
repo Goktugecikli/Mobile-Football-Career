@@ -40,11 +40,13 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | Path | Role |
 | --- | --- |
 | `src/main.tsx` | Mounts React against `#root` |
-| `src/app/App.tsx` | Composition: error boundary + bootstrap screen |
+| `src/app/App.tsx` | Composition: error boundary + app shell + bootstrap screen |
+| `src/app/AppShell.tsx` | Root mobile layout shell |
 | `src/app/AppErrorBoundary.tsx` | Render-error boundary |
 | `src/app/BootstrapScreen.tsx` | Minimal proof that React and tokens work |
 | `src/app/GameHost.tsx` | DOM parent + `GameSession` lifecycle |
 | `src/config/appConfig.ts` | Typed config factory and `appConfig` export |
+| `src/config/orientationPolicy.ts` | Orientation policy location (unset until product decision) |
 | `src/core/errors.ts` | `AppError`, codes, categories, `normalizeError` |
 | `src/core/gameSession.ts` | Game host contract and event type |
 | `src/game/createPhaserGameSession.ts` | Phaser implementation of `GameSession` |
