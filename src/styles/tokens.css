@@ -160,6 +160,20 @@
     var(--layout-padding-inline) + var(--safe-area-inset-left)
   );
 
+  --layout-chrome-padding-block: var(--space-lg);
+  --layout-chrome-padding-top: calc(
+    var(--layout-chrome-padding-block) + var(--safe-area-inset-top)
+  );
+  --layout-chrome-padding-right: calc(
+    var(--layout-padding-inline) + var(--safe-area-inset-right)
+  );
+  --layout-chrome-padding-bottom: calc(
+    var(--layout-chrome-padding-block) + var(--safe-area-inset-bottom)
+  );
+  --layout-chrome-padding-left: calc(
+    var(--layout-padding-inline) + var(--safe-area-inset-left)
+  );
+
   --z-base: 0;
   --z-raised: 10;
   --z-overlay: 100;

@@ -4,7 +4,7 @@
   flex: 1;
   min-height: var(--layout-min-height);
   min-width: 0;
-  overflow-x: hidden;
+  overflow: hidden;
   color: var(--color-text-primary);
   background:
     radial-gradient(
@@ -18,4 +18,29 @@
       var(--color-bg-app) 42%,
       var(--color-bg-app) 100%
     );
+}
+
+.header {
+  flex-shrink: 0;
+  padding: var(--layout-chrome-padding-top)
+    var(--layout-chrome-padding-right)
+    var(--layout-chrome-padding-block)
+    var(--layout-chrome-padding-left);
+}
+
+.main {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.footer {
+  flex-shrink: 0;
+  padding: var(--layout-chrome-padding-block)
+    var(--layout-chrome-padding-right)
+    var(--layout-chrome-padding-bottom)
+    var(--layout-chrome-padding-left);
 }
