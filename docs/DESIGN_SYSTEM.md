@@ -32,7 +32,24 @@ Visual and mobile layout decisions live in `src/styles/tokens.css` and `src/styl
 - Component CSS modules consume semantic tokens only. Do not repeat hex values, spacing literals, or palette names when a token exists.
 - Add a token when the same visual decision is about to be repeated, or when it represents a design-system primitive. Do not tokenise a one-off implementation detail.
 - Prefer CSS modules colocated with the component. Keep `global.css` limited to reset and document-level rules.
-- Shared React components are created only when they are actually shared or are a deliberate primitive. Do not pre-build a component library.
+
+## Shared UI primitives
+
+Reusable, domain-neutral UI lives in `src/shared/ui/`. Each primitive owns its component and CSS module (for example `Button/Button.tsx`).
+
+| Primitive | Approved variants |
+| --- | --- |
+| Button | `primary`, `secondary`, `ghost`, `danger` |
+| Badge | `neutral`, `accent`, `success`, `warning`, `danger`, `info` |
+| ProgressBar | `default`, `success`, `warning`, `danger` |
+| Card | Composable shell (`Card`, `CardHeader`, `CardContent`) |
+| Modal | Controlled open/close; optional actions slot |
+
+**Primitive vs feature component:** Primitives expose generic layout, interaction, and visual semantics only. Feature screens compose primitives and add domain copy, data, and behavior. Do not recreate button, card, badge, progress, or modal styling inside features when a primitive already covers the need.
+
+**API philosophy:** Small typed props, semantic variants only, native HTML semantics where applicable, no arbitrary color/style escape hatches, no global managers or registries.
+
+Feature code imports from `@/shared/ui/<Primitive>/<Primitive>`. Do not pre-build additional primitives or barrel files unless reuse proves they are needed.
 
 ## Mobile viewport ownership
 

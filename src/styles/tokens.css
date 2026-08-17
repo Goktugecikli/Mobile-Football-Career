@@ -138,6 +138,7 @@
   --layout-content-max-width: 36rem;
   --layout-game-viewport-max-width: 22.5rem;
   --layout-game-viewport-max-height: 60dvh;
+  --size-control-min-height: 2.75rem;
 
   --safe-area-inset-top: env(safe-area-inset-top, 0px);
   --safe-area-inset-right: env(safe-area-inset-right, 0px);
