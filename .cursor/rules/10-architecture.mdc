@@ -23,6 +23,6 @@ React application code must not import Phaser scene internals. Phaser code must 
 
 Read environment variables only inside `src/config`. Access configuration through `appConfig`, not scattered constants.
 
-Unexpected failures pass through the error model in `src/core/errors.ts`. Presentation code consumes `AppError`, never raw `unknown` exceptions.
+Unexpected failures pass through the error model in `src/core/errors.ts`. Presentation code consumes `AppError` or typed `GameEvent` failure codes, never raw `unknown` exceptions.
 
 Record meaningful long-term architectural choices under `docs/DECISIONS` using the process in `docs/DECISIONS/README.md`.
