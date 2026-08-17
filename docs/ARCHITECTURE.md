@@ -35,7 +35,18 @@ React must not hold Scene references or poke Phaser internals. Phaser must not i
 
 React UI stays functional. Classes are used for `AppError`, the React error boundary (required by React), Phaser scenes, and the Phaser session wrapper. That is ownership of lifetime and identity, not an application-wide object model.
 
-Routing, client state libraries, persistence, and feature modules are deferred. Capacitor is configured at the repository root. Android and iOS platforms are initialized in `android/` and `ios/` and are committed. Native capability adapters belong behind application-owned contracts when a feature needs them; see the native boundary below.
+Client-side routing uses React Router declarative SPA mode (`BrowserRouter` + `Routes`) under `src/app/routing/`. Product screen routes are added only after the screen map is approved. Client state libraries, persistence, and feature modules beyond routing remain deferred. Capacitor is configured at the repository root. Android and iOS platforms are initialized in `android/` and `ios/` and are committed. Native capability adapters belong behind application-owned contracts when a feature needs them; see the native boundary below.
+
+## Routing
+
+Authoritative location: `src/app/routing/`.
+
+- `AppRouter.tsx` — `BrowserRouter`, route table, and composition with `AppShell`
+- `appPaths.ts` — typed path constants for defined routes
+
+Use React Router `Link`, `useNavigate`, and related APIs directly. Do not wrap them in custom navigation services. Feature components must not define global routes. `AppShell` hosts routed content but does not own route definitions or product navigation.
+
+Current routes are intentionally minimal: bootstrap (`/`) and a not-found fallback. Bottom navigation and final product routes are deferred until approved.
 
 ## Native boundary
 

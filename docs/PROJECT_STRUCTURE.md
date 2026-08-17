@@ -18,6 +18,7 @@ nss-v2/
 ├── public/                  Static assets served as-is
 ├── src/
 │   ├── app/                 React composition root
+│   │   └── routing/         SPA route table and path constants
 │   ├── config/              Validated application configuration
 │   ├── core/                Framework-independent contracts
 │   ├── game/                Phaser host implementation
@@ -43,7 +44,10 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | Path | Role |
 | --- | --- |
 | `src/main.tsx` | Mounts React against `#root` |
-| `src/app/App.tsx` | Composition: error boundary + app shell + bootstrap screen |
+| `src/app/App.tsx` | Composition: error boundary + router |
+| `src/app/routing/AppRouter.tsx` | BrowserRouter, route table, AppShell integration |
+| `src/app/routing/appPaths.ts` | Typed path constants for defined routes |
+| `src/app/NotFoundScreen.tsx` | Fallback for undefined routes |
 | `src/app/AppShell.tsx` | Application shell with optional header/footer chrome slots |
 | `src/shared/layout/ScreenLayout/ScreenLayout.tsx` | Default scrollable screen layout wrapper |
 | `src/app/AppErrorBoundary.tsx` | Render-error boundary |
