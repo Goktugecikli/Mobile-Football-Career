@@ -11,6 +11,7 @@ nss-v2/
 ├── .gitattributes           Repository line-ending policy (LF)
 ├── .nvmrc                   Authoritative Node.js version
 ├── android/                 Capacitor Android platform (committed native source)
+├── ios/                     Capacitor iOS platform (committed native source; build requires macOS/Xcode)
 ├── capacitor.config.ts      Capacitor native-shell configuration
 ├── docs/                    Human-readable architecture docs
 │   └── DECISIONS/           ADR-style records (process only, for now)
@@ -32,7 +33,7 @@ nss-v2/
 └── eslint.config.js
 ```
 
-Copied web assets under `android/app/src/main/assets/public` are produced by `npx cap sync android` and are gitignored.
+Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/public` are produced by Capacitor sync and are gitignored.
 
 ## Source files today
 

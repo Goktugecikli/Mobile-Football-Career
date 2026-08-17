@@ -4,7 +4,7 @@
 
 Use the Node.js version in `.nvmrc`. That file is the single source of truth for local version managers and GitHub Actions. npm ships with Node.js.
 
-Capacitor is configured. The Android platform lives in `android/` and is committed native source. iOS is not initialized. Day-to-day work still happens in the browser with Vite.
+Capacitor is configured. Android and iOS native projects live in `android/` and `ios/` and are committed source. Day-to-day web work still happens in the browser with Vite.
 
 Native identity is defined in `capacitor.config.ts`:
 
@@ -14,11 +14,24 @@ Native identity is defined in `capacitor.config.ts`:
 
 Web changes must be built and synced before native testing:
 
+**Android**
+
 1. `npm run build`
 2. `npx cap sync android`
 3. Open the project in Android Studio (`npx cap open android`) when a device or emulator build is needed
 
-Do not edit generated Android files unless the change is an intentional native-shell decision. Prefer web source and `capacitor.config.ts`. Do not commit live-reload `server` settings.
+**iOS**
+
+Capacitor 8 uses Swift Package Manager (SPM) by default for iOS. The `ios/` project was generated with `npx cap add ios`. Native build and simulator testing require macOS with Xcode 26.0+ and Xcode Command Line Tools. That build verification is not possible from Windows.
+
+On macOS, after web changes:
+
+1. `npm run build`
+2. `npx cap add ios` — only if `ios/` does not exist
+3. `npx cap sync ios`
+4. `npx cap open ios` — build and run in Xcode
+
+Do not edit generated native files unless the change is an intentional native-shell decision. Prefer web source and `capacitor.config.ts`. Do not commit live-reload `server` settings.
 
 ## Commands
 
