@@ -7,6 +7,8 @@ Only directories that contain bootstrap code are present.
 ```text
 nss-v2/
 ├── .cursor/rules/           Cursor agent rules
+├── .github/workflows/       GitHub Actions (CI)
+├── .nvmrc                   Authoritative Node.js version
 ├── docs/                    Human-readable architecture docs
 │   └── DECISIONS/           ADR-style records (process only, for now)
 ├── public/                  Static assets served as-is

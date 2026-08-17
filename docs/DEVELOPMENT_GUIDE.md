@@ -2,20 +2,41 @@
 
 ## Prerequisites
 
-- Node.js 20 or later
-- npm (comes with Node.js)
+Use the Node.js version in `.nvmrc`. That file is the single source of truth for local version managers and GitHub Actions. npm ships with Node.js.
 
 Capacitor native projects are not part of this foundation. Develop in the browser with Vite.
 
 ## Commands
 
 ```bash
-npm install
+npm ci             # install from package-lock.json (same as CI)
 npm run dev        # Vite development server
-npm run build      # Typecheck (tsc -b) then production bundle
-npm run lint       # ESLint
 npm run typecheck  # TypeScript project build, no bundle
+npm run lint       # ESLint
+npm run build      # Typecheck (tsc -b) then production bundle
 ```
+
+`npm install` is for when the lockfile itself should change.
+
+## Git workflow
+
+`main` is the latest validated integrated state. Work on short-lived branches and merge through pull requests so CI runs before integration. This is enough for one developer now and two later.
+
+Branch names:
+
+- `feature/<scope>` — new capability
+- `fix/<scope>` — defect
+- `chore/<scope>` — tooling, docs, or maintenance
+
+Examples: `feature/game-host`, `fix/error-boundary`, `chore/ci`.
+
+1. Branch from current `main`.
+2. Keep the change scoped. Validate locally with `typecheck`, `lint`, and `build`.
+3. Open a pull request targeting `main`.
+4. Wait for the `CI` GitHub Actions job.
+5. Merge when the change is reviewed and CI is green.
+
+Do not add GitFlow, a `develop` branch, or release branches unless a later decision requires them.
 
 ## Where to put new code
 
