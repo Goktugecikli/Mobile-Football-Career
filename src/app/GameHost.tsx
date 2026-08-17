@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState, type CSSProperties } from 'react';
 import { appConfig } from '@/config/appConfig';
 import { ErrorCode } from '@/core/errors';
 import { createPhaserGameSession } from '@/game/createPhaserGameSession';
@@ -51,9 +51,11 @@ export function GameHost() {
       <div
         ref={parentRef}
         className={styles.viewport}
-        style={{
-          aspectRatio: `${appConfig.game.width} / ${appConfig.game.height}`,
-        }}
+        style={
+          {
+            '--game-aspect-ratio': `${appConfig.game.width} / ${appConfig.game.height}`,
+          } as CSSProperties
+        }
       />
     </section>
   );

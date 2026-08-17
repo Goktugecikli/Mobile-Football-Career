@@ -1,17 +1,22 @@
 .screen {
-  min-height: 100dvh;
   display: flex;
+  flex: 1;
   flex-direction: column;
   gap: var(--space-6);
-  padding: var(--space-6);
-  background: var(--color-bg);
-  color: var(--color-text);
+  min-height: 0;
+  min-width: 0;
+  padding: var(--layout-padding-top) var(--layout-padding-right)
+    var(--layout-padding-bottom) var(--layout-padding-left);
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .header {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  flex-shrink: 0;
   max-width: 36rem;
 }
 

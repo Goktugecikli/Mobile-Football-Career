@@ -15,3 +15,5 @@ The public game API is `createPhaserGameSession` plus the `GameSession` contract
 Classes are expected for Scenes and for session lifetime. Do not add a generic game manager, event bus, or plugin framework before a concrete gameplay task needs it.
 
 Do not implement career, match, or gameplay systems in this layer until a task asks for them. `HostScene` exists to boot the runtime, not to host product features.
+
+Parent container resize is handled inside the game session with `ResizeObserver` and Phaser scale refresh. React must not call Phaser scale APIs directly.
