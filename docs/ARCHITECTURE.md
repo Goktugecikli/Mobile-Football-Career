@@ -35,7 +35,7 @@ React must not hold Scene references or poke Phaser internals. Phaser must not i
 
 React UI stays functional. Classes are used for `AppError`, the React error boundary (required by React), Phaser scenes, and the Phaser session wrapper. That is ownership of lifetime and identity, not an application-wide object model.
 
-Routing, client state libraries, persistence, and feature modules are deferred. Capacitor is configured at the repository root; Android and iOS platform projects are not initialized yet. Native capability adapters belong behind application-owned contracts when a feature needs them; see the native boundary below.
+Routing, client state libraries, persistence, and feature modules are deferred. Capacitor is configured at the repository root. The Android platform is initialized in `android/` and is committed; iOS is not. Native capability adapters belong behind application-owned contracts when a feature needs them; see the native boundary below.
 
 ## Native boundary
 
@@ -53,4 +53,4 @@ Native identity lives in `capacitor.config.ts`:
 - Display name: `Mobile Football Career`
 - Web assets: Vite `dist` output
 
-When Android or iOS platforms are added, the workflow is `npm run build` then `npx cap sync`. Platform setup is documented in `docs/DEVELOPMENT_GUIDE.md`.
+Web-to-native copy uses `npm run build` then `npx cap sync android`. Native workflow is documented in `docs/DEVELOPMENT_GUIDE.md`.

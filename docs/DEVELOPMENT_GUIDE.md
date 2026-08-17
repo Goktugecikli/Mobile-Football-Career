@@ -4,7 +4,7 @@
 
 Use the Node.js version in `.nvmrc`. That file is the single source of truth for local version managers and GitHub Actions. npm ships with Node.js.
 
-Capacitor is configured; Android and iOS platform directories are not initialized yet. Develop in the browser with Vite.
+Capacitor is configured. The Android platform lives in `android/` and is committed native source. iOS is not initialized. Day-to-day work still happens in the browser with Vite.
 
 Native identity is defined in `capacitor.config.ts`:
 
@@ -12,13 +12,13 @@ Native identity is defined in `capacitor.config.ts`:
 - Application ID: `com.goktugecikli.mobilefootballcareer`
 - Web build output: `dist` (from `npm run build`)
 
-When native platforms are added in a later task, the lifecycle is:
+Web changes must be built and synced before native testing:
 
 1. `npm run build`
-2. `npx cap sync`
-3. Open the native project with Android Studio or Xcode
+2. `npx cap sync android`
+3. Open the project in Android Studio (`npx cap open android`) when a device or emulator build is needed
 
-Verify Capacitor setup with `npx cap doctor` after building. Do not commit dev-server URLs or other live-reload `server` settings to `capacitor.config.ts`.
+Do not edit generated Android files unless the change is an intentional native-shell decision. Prefer web source and `capacitor.config.ts`. Do not commit live-reload `server` settings.
 
 ## Commands
 
