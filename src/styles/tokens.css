@@ -1,63 +1,163 @@
 :root {
   color-scheme: dark;
 
-  --color-bg: #12141a;
-  --color-surface: #1b1e27;
-  --color-text: #e8eaef;
-  --color-text-muted: #9aa3b5;
-  --color-border: #2a3040;
-  --color-accent: #7c8cff;
-  --color-danger: #f07178;
-  --color-focus: #7c8cff;
+  /*
+   * Raw palette — internal structure only. Component CSS must consume semantic
+   * tokens below, not palette values directly.
+   */
+  --palette-ink-950: #080a0f;
+  --palette-ink-900: #0f1219;
+  --palette-ink-850: #141822;
+  --palette-ink-800: #1a1f2b;
+  --palette-ink-700: #232936;
+  --palette-ink-600: #2e3647;
+  --palette-ink-500: #3d4659;
 
+  --palette-fog-50: #f4f6fa;
+  --palette-fog-100: #e8ebf2;
+  --palette-fog-200: #c8cedb;
+  --palette-fog-400: #939eb3;
+  --palette-fog-600: #6b758a;
+
+  --palette-accent-300: #a3afff;
+  --palette-accent-400: #8b97ff;
+  --palette-accent-500: #6f7dff;
+  --palette-accent-600: #5563e8;
+
+  --palette-pitch-400: #3ecf8e;
+  --palette-amber-400: #e8b84a;
+  --palette-red-400: #f07178;
+  --palette-sky-400: #5eb3ff;
+
+  /* Background */
+  --color-bg-app: var(--palette-ink-900);
+  --color-bg-subtle: var(--palette-ink-950);
+
+  /* Surface */
+  --color-surface-primary: var(--palette-ink-850);
+  --color-surface-secondary: var(--palette-ink-800);
+  --color-surface-inset: var(--palette-ink-950);
+  --color-surface-overlay: color-mix(
+    in srgb,
+    var(--palette-ink-700) 72%,
+    transparent
+  );
+
+  /* Text */
+  --color-text-primary: var(--palette-fog-100);
+  --color-text-secondary: var(--palette-fog-400);
+  --color-text-tertiary: var(--palette-fog-600);
+  --color-text-accent: var(--palette-accent-300);
+  --color-text-inverse: var(--palette-ink-950);
+
+  /* Accent / brand */
+  --color-accent-primary: var(--palette-accent-500);
+  --color-accent-strong: var(--palette-accent-400);
+  --color-accent-muted: color-mix(
+    in srgb,
+    var(--palette-accent-500) 16%,
+    transparent
+  );
+
+  /* Border */
+  --color-border-default: var(--palette-ink-600);
+  --color-border-subtle: color-mix(
+    in srgb,
+    var(--palette-ink-600) 56%,
+    transparent
+  );
+  --color-border-strong: var(--palette-ink-500);
+  --color-border-focus: var(--palette-accent-400);
+
+  /* Status */
+  --color-status-success: var(--palette-pitch-400);
+  --color-status-warning: var(--palette-amber-400);
+  --color-status-danger: var(--palette-red-400);
+  --color-status-info: var(--palette-sky-400);
+
+  /* Typography */
   --font-family-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
   --font-family-mono: ui-monospace, Consolas, monospace;
 
+  --font-size-xs: 0.75rem;
   --font-size-sm: 0.875rem;
   --font-size-md: 1rem;
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.75rem;
+  --font-size-2xl: 2.25rem;
 
   --font-weight-regular: 400;
   --font-weight-medium: 500;
   --font-weight-semibold: 600;
+  --font-weight-bold: 700;
 
-  --line-height-tight: 1.2;
+  --line-height-tight: 1.15;
+  --line-height-snug: 1.35;
   --line-height-normal: 1.5;
+  --line-height-relaxed: 1.65;
 
-  --space-1: 0.25rem;
-  --space-2: 0.5rem;
-  --space-3: 0.75rem;
-  --space-4: 1rem;
-  --space-5: 1.5rem;
-  --space-6: 2rem;
-  --space-8: 3rem;
+  --letter-spacing-tight: -0.02em;
+  --letter-spacing-normal: 0;
+  --letter-spacing-wide: 0.06em;
+  --letter-spacing-wider: 0.12em;
 
+  /* Spacing */
+  --space-xs: 0.25rem;
+  --space-sm: 0.5rem;
+  --space-md: 0.75rem;
+  --space-lg: 1rem;
+  --space-xl: 1.5rem;
+  --space-2xl: 2rem;
+  --space-3xl: 3rem;
+
+  /* Radius */
+  --radius-xs: 0.125rem;
   --radius-sm: 0.25rem;
   --radius-md: 0.5rem;
   --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-full: 9999px;
 
-  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.24);
-  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.28);
+  /* Shadow */
+  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.2);
+  --shadow-sm: 0 2px 8px rgb(0 0 0 / 0.24);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.32);
+  --shadow-lg: 0 16px 40px rgb(0 0 0 / 0.36);
+  --shadow-inset: inset 0 1px 0 rgb(255 255 255 / 0.04);
+  --shadow-glow-accent: 0 0 0 1px
+      color-mix(in srgb, var(--palette-accent-500) 28%, transparent),
+    0 8px 32px rgb(0 0 0 / 0.36);
 
+  /* Motion */
   --duration-fast: 150ms;
   --duration-normal: 250ms;
   --easing-standard: cubic-bezier(0.2, 0, 0, 1);
 
   /* Layout and viewport */
   --layout-min-height: 100dvh;
+  --layout-content-max-width: 36rem;
+  --layout-game-viewport-max-width: 22.5rem;
+  --layout-game-viewport-max-height: 60dvh;
 
   --safe-area-inset-top: env(safe-area-inset-top, 0px);
   --safe-area-inset-right: env(safe-area-inset-right, 0px);
   --safe-area-inset-bottom: env(safe-area-inset-bottom, 0px);
   --safe-area-inset-left: env(safe-area-inset-left, 0px);
 
-  --layout-padding-inline: var(--space-6);
-  --layout-padding-block: var(--space-6);
-  --layout-padding-top: calc(var(--layout-padding-block) + var(--safe-area-inset-top));
-  --layout-padding-right: calc(var(--layout-padding-inline) + var(--safe-area-inset-right));
-  --layout-padding-bottom: calc(var(--layout-padding-block) + var(--safe-area-inset-bottom));
-  --layout-padding-left: calc(var(--layout-padding-inline) + var(--safe-area-inset-left));
+  --layout-padding-inline: var(--space-2xl);
+  --layout-padding-block: var(--space-2xl);
+  --layout-padding-top: calc(
+    var(--layout-padding-block) + var(--safe-area-inset-top)
+  );
+  --layout-padding-right: calc(
+    var(--layout-padding-inline) + var(--safe-area-inset-right)
+  );
+  --layout-padding-bottom: calc(
+    var(--layout-padding-block) + var(--safe-area-inset-bottom)
+  );
+  --layout-padding-left: calc(
+    var(--layout-padding-inline) + var(--safe-area-inset-left)
+  );
 
   --z-base: 0;
   --z-raised: 10;

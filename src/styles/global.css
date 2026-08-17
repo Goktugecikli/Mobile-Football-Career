@@ -12,8 +12,8 @@ html {
   font-size: var(--font-size-md);
   line-height: var(--line-height-normal);
   font-weight: var(--font-weight-regular);
-  color: var(--color-text);
-  background: var(--color-bg);
+  color: var(--color-text-primary);
+  background: var(--color-bg-app);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -webkit-text-size-adjust: 100%;
@@ -35,6 +35,6 @@ body {
 }
 
 :focus-visible {
-  outline: 2px solid var(--color-focus);
+  outline: 2px solid var(--color-border-focus);
   outline-offset: 2px;
 }

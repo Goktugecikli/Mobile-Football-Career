@@ -10,7 +10,7 @@ alwaysApply: false
 
 Application components must not introduce arbitrary colors, font sizes, or spacing when a token already exists. Add a token when the value is a repeated visual decision, not when it is a one-off implementation detail.
 
-Use semantic token names (`--color-text`, `--space-4`), not raw palette nicknames, in component CSS. Keep product theming out of bootstrap UI; do not design feature screens or the real home screen here.
+Use semantic token names (`--color-text-primary`, `--space-md`), not raw palette nicknames, in component CSS. Palette tokens (`--palette-*`) are internal to `tokens.css` only.
 
 Prefer CSS modules colocated with the component that owns them. Global styles belong in `src/styles` and should stay limited to reset, root document rules, and token application.
 
