@@ -1,6 +1,6 @@
 # Architecture
 
-This repository is the engineering foundation for a mobile-first football career game. The current source tree is intentionally small. Layers exist so later features have a clear home; they are not a request to pre-build those features.
+This repository is the engineering foundation for Mobile Football Career. The current source tree is intentionally small. Layers exist so later features have a clear home; they are not a request to pre-build those features.
 
 ## Layers
 
@@ -20,7 +20,7 @@ Unexpected failures are normalized to `AppError` (`src/core/errors.ts`) so raw `
 
 ## Configuration
 
-`appConfig` is the single access path. It is created once at startup, is read-only, and is not global mutable state. Environment-specific, native, and gameplay configuration can be added to this object later without scattering `import.meta.env` reads.
+`appConfig` is the single access path. It is created once at startup, is read-only, and is not global mutable state. Environment-specific, native, and gameplay configuration can be added to this object later without scattering `import.meta.env` reads. Vite environment variable conventions are documented in `docs/DEVELOPMENT_GUIDE.md`.
 
 ## Phaser communication
 

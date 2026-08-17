@@ -4,7 +4,12 @@
 
 Use the Node.js version in `.nvmrc`. That file is the single source of truth for local version managers and GitHub Actions. npm ships with Node.js.
 
-Capacitor native projects are not part of this foundation. Develop in the browser with Vite.
+Capacitor native projects are not initialized yet. Develop in the browser with Vite.
+
+When Capacitor is added, use this identity:
+
+- Display name: `Mobile Football Career`
+- Application ID: `com.goktugecikli.mobilefootballcareer`
 
 ## Commands
 
@@ -17,6 +22,14 @@ npm run build      # Typecheck (tsc -b) then production bundle
 ```
 
 `npm install` is for when the lockfile itself should change.
+
+## Environment variables
+
+Only `src/config` may read `import.meta.env`. Application, feature, and game code use `appConfig`.
+
+Vite exposes only `VITE_`-prefixed variables to client code. Do not put secrets in those variables; they are bundled into the browser.
+
+Supported variables are listed in `.env.example`. All are optional; `appConfig` supplies defaults when they are unset. Copy `.env.example` to a gitignored `.env` only when you need to override a default. Do not commit `.env` files.
 
 ## Git workflow
 

@@ -1,4 +1,4 @@
-# NSS
+# Mobile Football Career
 
 Engineering foundation for a mobile-first football career game. This repository currently contains bootstrap, architecture, and tooling only. Product features are not implemented yet.
 
@@ -12,7 +12,7 @@ Engineering foundation for a mobile-first football career game. This repository 
 
 ## Setup
 
-Use the Node.js version in `.nvmrc`. Commands, local validation, and the Git workflow are in the [development guide](docs/DEVELOPMENT_GUIDE.md).
+Use the Node.js version in `.nvmrc`. Commands, local validation, Git workflow, and environment conventions are in the [development guide](docs/DEVELOPMENT_GUIDE.md).
 
 ```bash
 npm ci
