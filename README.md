@@ -10,24 +10,13 @@ Engineering foundation for a mobile-first football career game. This repository 
 - Phaser 3
 - npm
 
-## Prerequisites
-
-- Node.js 20 or later
-- npm
-
 ## Setup
 
-```bash
-npm install
-```
-
-## Scripts
+Use the Node.js version in `.nvmrc`. Commands, local validation, and the Git workflow are in the [development guide](docs/DEVELOPMENT_GUIDE.md).
 
 ```bash
-npm run dev        # development server
-npm run build      # typecheck and production build
-npm run lint       # ESLint
-npm run typecheck  # TypeScript check
+npm ci
+npm run dev
 ```
 
 ## Documentation

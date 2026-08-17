@@ -7,6 +7,10 @@ alwaysApply: true
 
 Required scripts: `dev`, `build`, `lint`, `typecheck`. Run typecheck, lint, and production build after changes that can affect them, and fix failures caused by the task.
 
+The Git branch/PR process is in `docs/DEVELOPMENT_GUIDE.md`. CI is the single `CI` job in `.github/workflows/ci.yml`. Do not add extra workflows, deployment, native builds, or a test job unless a task asks.
+
+`.nvmrc` is the only Node.js version pin. Do not duplicate that version in CI or package metadata.
+
 Do not add Husky, commitlint, Storybook, Redux, Zustand, React Router, testing frameworks, UI libraries, or CSS frameworks unless a task explicitly requires them.
 
 Do not initialize Capacitor Android/iOS projects until a later task asks for them.
