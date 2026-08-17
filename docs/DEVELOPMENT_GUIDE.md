@@ -4,12 +4,21 @@
 
 Use the Node.js version in `.nvmrc`. That file is the single source of truth for local version managers and GitHub Actions. npm ships with Node.js.
 
-Capacitor native projects are not initialized yet. Develop in the browser with Vite.
+Capacitor is configured; Android and iOS platform directories are not initialized yet. Develop in the browser with Vite.
 
-When Capacitor is added, use this identity:
+Native identity is defined in `capacitor.config.ts`:
 
 - Display name: `Mobile Football Career`
 - Application ID: `com.goktugecikli.mobilefootballcareer`
+- Web build output: `dist` (from `npm run build`)
+
+When native platforms are added in a later task, the lifecycle is:
+
+1. `npm run build`
+2. `npx cap sync`
+3. Open the native project with Android Studio or Xcode
+
+Verify Capacitor setup with `npx cap doctor` after building. Do not commit dev-server URLs or other live-reload `server` settings to `capacitor.config.ts`.
 
 ## Commands
 

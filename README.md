@@ -8,6 +8,7 @@ Engineering foundation for a mobile-first football career game. This repository 
 - React 19
 - TypeScript
 - Phaser 3
+- Capacitor 8
 - npm
 
 ## Setup

@@ -13,7 +13,7 @@ The Git branch/PR process is in `docs/DEVELOPMENT_GUIDE.md`. CI is the single `C
 
 Do not add Husky, commitlint, Storybook, Redux, Zustand, React Router, testing frameworks, UI libraries, or CSS frameworks unless a task explicitly requires them.
 
-Do not initialize Capacitor Android/iOS projects until a later task asks for them.
+Do not initialize Capacitor Android/iOS platform projects until a later task asks for them. Capacitor core configuration may exist without native directories.
 
 Keep the task scoped. Do not describe unimplemented product features as if they exist. Do not start the next numbered task unless asked.
 
