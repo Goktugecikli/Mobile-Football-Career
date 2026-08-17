@@ -21,6 +21,7 @@ nss-v2/
 │   ├── config/              Validated application configuration
 │   ├── core/                Framework-independent contracts
 │   ├── game/                Phaser host implementation
+│   ├── shared/ui/           Reusable UI primitives (Button, Card, Badge, etc.)
 │   ├── styles/              Design tokens and global CSS
 │   ├── main.tsx             Module entry
 │   └── vite-env.d.ts        Vite environment typings
@@ -53,6 +54,8 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | `src/game/HostScene.ts` | Empty host scene used to boot Phaser |
 | `src/styles/tokens.css` | Authoritative design tokens |
 | `src/styles/global.css` | Document reset and token application |
+| `src/shared/ui/*` | Domain-neutral UI primitives |
+| `src/app/BootstrapUiShowcase.tsx` | Temporary bootstrap preview of UI primitives |
 
 ## Intended later locations
 
@@ -60,7 +63,7 @@ Do not create these until they have real code.
 
 ```text
 src/features/<feature-name>/     Feature UI, hooks, and feature-local logic
-src/shared/components/           Design-system or otherwise shared components
+src/shared/ui/                   Reusable UI primitives (Button, Card, Badge, etc.)
 src/shared/native/               Capacitor adapters for core native contracts (when needed)
 src/shared/hooks/                Shared React hooks
 src/game/scenes/                 Additional Phaser scenes

@@ -1,4 +1,5 @@
 import { appConfig } from '@/config/appConfig';
+import { BootstrapUiShowcase } from './BootstrapUiShowcase';
 import { GameHost } from './GameHost';
 import styles from './BootstrapScreen.module.css';
 
@@ -26,6 +27,8 @@ export function BootstrapScreen() {
         </div>
         <GameHost />
       </section>
+
+      <BootstrapUiShowcase />
     </main>
   );
 }

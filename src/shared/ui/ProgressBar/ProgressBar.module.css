@@ -1,0 +1,58 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  width: 100%;
+}
+
+.labelRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-md);
+}
+
+.label {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.value {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+}
+
+.track {
+  overflow: hidden;
+  height: var(--space-sm);
+  border-radius: var(--radius-full);
+  background: var(--color-surface-inset);
+  border: 1px solid var(--color-border-subtle);
+}
+
+.fill {
+  height: 100%;
+  border-radius: inherit;
+  background: var(--color-accent-primary);
+  transition: width var(--duration-normal) var(--easing-standard);
+}
+
+.track[data-variant='default'] .fill {
+  background: var(--color-accent-primary);
+}
+
+.track[data-variant='success'] .fill {
+  background: var(--color-status-success);
+}
+
+.track[data-variant='warning'] .fill {
+  background: var(--color-status-warning);
+}
+
+.track[data-variant='danger'] .fill {
+  background: var(--color-status-danger);
+}

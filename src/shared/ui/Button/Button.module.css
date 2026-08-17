@@ -1,0 +1,104 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-sm);
+  min-height: var(--size-control-min-height);
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
+  cursor: pointer;
+  transition:
+    background-color var(--duration-fast) var(--easing-standard),
+    border-color var(--duration-fast) var(--easing-standard),
+    color var(--duration-fast) var(--easing-standard),
+    opacity var(--duration-fast) var(--easing-standard);
+}
+
+.button[data-full-width='true'] {
+  width: 100%;
+}
+
+.button:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.56;
+}
+
+.button[data-variant='primary'] {
+  background: var(--color-accent-primary);
+  color: var(--color-text-inverse);
+}
+
+.button[data-variant='primary']:not(:disabled):active {
+  background: var(--color-accent-strong);
+}
+
+.button[data-variant='secondary'] {
+  background: var(--color-surface-secondary);
+  border-color: var(--color-border-default);
+  color: var(--color-text-primary);
+}
+
+.button[data-variant='secondary']:not(:disabled):active {
+  background: var(--color-surface-inset);
+}
+
+.button[data-variant='ghost'] {
+  background: transparent;
+  color: var(--color-text-secondary);
+}
+
+.button[data-variant='ghost']:not(:disabled):active {
+  background: var(--color-surface-secondary);
+  color: var(--color-text-primary);
+}
+
+.button[data-variant='danger'] {
+  background: color-mix(
+    in srgb,
+    var(--color-status-danger) 16%,
+    var(--color-surface-primary)
+  );
+  border-color: color-mix(
+    in srgb,
+    var(--color-status-danger) 36%,
+    transparent
+  );
+  color: var(--color-status-danger);
+}
+
+.button[data-variant='danger']:not(:disabled):active {
+  background: color-mix(
+    in srgb,
+    var(--color-status-danger) 24%,
+    var(--color-surface-primary)
+  );
+}
+
+.spinner {
+  width: 1rem;
+  height: 1rem;
+  border: 2px solid currentcolor;
+  border-top-color: transparent;
+  border-radius: var(--radius-full);
+  animation: button-spin var(--duration-normal) linear infinite;
+}
+
+.label[data-loading='true'] {
+  opacity: 0.88;
+}
+
+@keyframes button-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
