@@ -20,6 +20,6 @@ Do not add Capacitor plugins, adapters, or speculative interfaces for haptics, f
 
 Do not add `server.url`, cleartext, or other live-reload settings to committed Capacitor config.
 
-`android/` is committed native source. Keep Android edits intentional and minimal. After web changes, run `npm run build` then `npx cap sync android` before native testing.
+`android/` and `ios/` are committed native source. Keep native edits intentional and minimal. After web changes, run `npm run build` then `npx cap sync android` or `npx cap sync ios` before native testing.
 
-Do not run `npx cap add ios` unless a task explicitly asks for iOS initialization.
+iOS uses Capacitor 8 SPM by default. Do not add CocoaPods unless a task requires it. iOS build and simulator verification require macOS with Xcode 26.0+.

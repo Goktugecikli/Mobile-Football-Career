@@ -13,7 +13,7 @@ The Git branch/PR process is in `docs/DEVELOPMENT_GUIDE.md`. CI is the single `C
 
 Do not add Husky, commitlint, Storybook, Redux, Zustand, React Router, testing frameworks, UI libraries, or CSS frameworks unless a task explicitly requires them.
 
-Android is initialized under `android/`. Do not initialize iOS until a later task asks for it. Do not add native CI, signing, or plugin packages unless a task asks.
+Android and iOS are initialized under `android/` and `ios/`. Do not add native CI, signing, or plugin packages unless a task asks.
 
 Keep the task scoped. Do not describe unimplemented product features as if they exist. Do not start the next numbered task unless asked.
 
