@@ -5,6 +5,17 @@
   min-height: var(--layout-min-height);
   min-width: 0;
   overflow-x: hidden;
-  background: var(--color-bg);
-  color: var(--color-text);
+  color: var(--color-text-primary);
+  background:
+    radial-gradient(
+      ellipse 90% 55% at 50% -15%,
+      var(--color-accent-muted),
+      transparent 68%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-bg-subtle) 0%,
+      var(--color-bg-app) 42%,
+      var(--color-bg-app) 100%
+    );
 }

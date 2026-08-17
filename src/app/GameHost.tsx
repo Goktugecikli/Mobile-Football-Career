@@ -43,11 +43,14 @@ export function GameHost() {
 
   return (
     <section className={styles.host} aria-label="Game host">
-      <p className={styles.status}>
-        {status === 'failed'
-          ? `Game host failed (${errorCode ?? ErrorCode.UNKNOWN})`
-          : `Game host: ${status}`}
-      </p>
+      <div className={styles.statusRow}>
+        <p className={styles.statusLabel}>Host status</p>
+        <p className={styles.status} data-status={status}>
+          {status === 'failed'
+            ? `Failed (${errorCode ?? ErrorCode.UNKNOWN})`
+            : status}
+        </p>
+      </div>
       <div
         ref={parentRef}
         className={styles.viewport}

@@ -1,21 +1,38 @@
 # Design system
 
-Visual and mobile layout decisions live in `src/styles/tokens.css` and `src/styles/global.css`. Tokens are a starter mechanism, not a finished game theme.
+Visual and mobile layout decisions live in `src/styles/tokens.css` and `src/styles/global.css`. Tokens are the authoritative design foundation for application UI and future game-adjacent screens.
 
-## Token groups
+## Semantic token structure
 
-| Group | Examples | Use for |
+`tokens.css` defines two layers:
+
+1. **Raw palette** (`--palette-*`) — internal color ramps used only inside `tokens.css` to build semantic values. Component CSS must not reference palette tokens directly.
+2. **Semantic tokens** — the public contract consumed by component and module styles.
+
+| Category | Examples | Use for |
 | --- | --- | --- |
-| Color | `--color-bg`, `--color-text`, `--color-accent` | Surfaces, copy, emphasis, danger, focus |
-| Typography | `--font-family-sans`, `--font-size-md`, `--font-weight-semibold` | Text style |
-| Spacing | `--space-1` … `--space-8` | Padding, margin, gap |
-| Layout / viewport | `--layout-min-height`, `--layout-padding-*` | Full-height shell and screen padding |
-| Safe area | `--safe-area-inset-*`, `--layout-padding-*` | Notch, home indicator, edge insets |
-| Radii | `--radius-sm`, `--radius-md` | Corners |
-| Shadows | `--shadow-sm`, `--shadow-md` | Elevation |
+| Background | `--color-bg-app`, `--color-bg-subtle` | Page and shell backgrounds |
+| Surface | `--color-surface-primary`, `--color-surface-inset` | Cards, panels, inset regions |
+| Text | `--color-text-primary`, `--color-text-secondary`, `--color-text-accent` | Copy hierarchy and emphasis |
+| Accent / brand | `--color-accent-primary`, `--color-accent-muted` | Brand emphasis, glows, highlights |
+| Border | `--color-border-default`, `--color-border-focus` | Dividers, outlines, focus rings |
+| Status | `--color-status-success`, `--color-status-danger` | Runtime and feedback states |
+| Typography | `--font-size-md`, `--font-weight-semibold`, `--letter-spacing-wide` | Text style |
+| Spacing | `--space-xs` … `--space-3xl` | Padding, margin, gap |
+| Radius | `--radius-sm`, `--radius-lg`, `--radius-full` | Corners |
+| Shadow | `--shadow-md`, `--shadow-glow-accent`, `--shadow-inset` | Elevation and depth |
 | Motion | `--duration-fast`, `--easing-standard` | Transitions |
+| Layout / viewport | `--layout-min-height`, `--layout-content-max-width`, `--layout-padding-*` | Shell sizing and screen padding |
+| Safe area | `--safe-area-inset-*`, `--layout-padding-*` | Notch, home indicator, edge insets |
 | Z-index | `--z-base`, `--z-overlay` | Stacking |
 | Breakpoints | `--breakpoint-sm` (480px), `--breakpoint-md` (768px), `--breakpoint-lg` (1024px) | Layout thresholds |
+
+## Consuming tokens
+
+- Component CSS modules consume semantic tokens only. Do not repeat hex values, spacing literals, or palette names when a token exists.
+- Add a token when the same visual decision is about to be repeated, or when it represents a design-system primitive. Do not tokenise a one-off implementation detail.
+- Prefer CSS modules colocated with the component. Keep `global.css` limited to reset and document-level rules.
+- Shared React components are created only when they are actually shared or are a deliberate primitive. Do not pre-build a component library.
 
 ## Mobile viewport ownership
 
@@ -50,13 +67,6 @@ Web layouts must work in portrait and landscape. Do not scatter orientation assu
 - Game resolution and aspect ratio come from `appConfig.game` only.
 - React sets `--game-aspect-ratio` on the host viewport from that config.
 - Phaser `Scale.FIT` and parent `ResizeObserver` refresh live inside `src/game/createPhaserGameSession.ts`. React must not access Phaser scale or scene internals.
-
-## Usage rules
-
-- Components consume semantic tokens, not ad-hoc hex values or spacing literals, when a token already exists.
-- Add a token when the same visual decision is about to be repeated, or when it represents a design-system primitive. Do not tokenise a one-off implementation detail.
-- Prefer CSS modules colocated with the component. Keep `global.css` limited to reset and document-level rules.
-- Shared React components are created only when they are actually shared or are a deliberate primitive. Do not pre-build a component library.
 
 ## Breakpoints
 

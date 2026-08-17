@@ -13,7 +13,19 @@ export function BootstrapScreen() {
           running. Product features are not implemented yet.
         </p>
       </header>
-      <GameHost />
+
+      <section
+        className={styles.runtimePanel}
+        aria-label="Runtime verification"
+      >
+        <div className={styles.panelHeader}>
+          <h2 className={styles.panelTitle}>Phaser host</h2>
+          <p className={styles.panelDescription}>
+            Canvas runtime connected to the application shell.
+          </p>
+        </div>
+        <GameHost />
+      </section>
     </main>
   );
 }
