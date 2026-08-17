@@ -1,0 +1,36 @@
+.screen {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: var(--layout-padding-top) var(--layout-padding-right)
+    var(--layout-padding-bottom) var(--layout-padding-left);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  width: 100%;
+  max-width: var(--layout-content-max-width);
+  margin-inline: auto;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  flex-shrink: 0;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  flex-shrink: 0;
+  min-width: 0;
+}

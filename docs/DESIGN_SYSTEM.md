@@ -51,11 +51,22 @@ Reusable, domain-neutral UI lives in `src/shared/ui/`. Each primitive owns its c
 
 Feature code imports from `@/shared/ui/<Primitive>/<Primitive>`. Do not pre-build additional primitives or barrel files unless reuse proves they are needed.
 
-## Mobile viewport ownership
+## Application shell and screen layout
+
+**AppShell** (`src/app/AppShell.tsx`) owns application-level chrome only: optional `header` and `footer` slots plus a non-scrolling `main` region. It holds viewport height, shell background, and future fixed top/bottom chrome. It must not contain feature content, routes, or navigation definitions.
+
+**ScreenLayout** (`src/shared/layout/ScreenLayout/ScreenLayout.tsx`) is the default reusable screen wrapper. Each screen composes one `ScreenLayout` inside `AppShell` `main`. It owns the single page-level scroll container, `--layout-padding-*` screen insets, content max-width, and optional screen `header` slot (title/supporting content composed by the screen).
+
+**Scrolling:** `AppShell` does not scroll. `ScreenLayout` is the one vertical scroll surface per screen. Avoid nested page-level overflow on feature screens.
+
+**Safe areas:** `env(safe-area-inset-*)` is mapped only in `tokens.css`. Screen content uses `--layout-padding-*`. Application chrome uses `--layout-chrome-padding-*` so future bottom navigation can sit above the home-indicator inset without duplicating raw environment values.
+
+**Navigation:** Routing and bottom navigation are deferred. `AppShell` `footer` is the future home for bottom chrome; no tab items or route logic belong in the shell yet.
 
 - `index.html` sets `viewport-fit=cover` for native WebView edge-to-edge behavior.
 - `src/styles/global.css` owns document-level viewport rules: `100dvh` minimum height, horizontal overflow prevention, and overscroll containment.
-- `src/app/AppShell.tsx` is the application root flex column for future headers, scroll regions, and footers.
+- `src/app/AppShell.tsx` is the application root flex column. Optional `header`/`footer` slots host future fixed chrome; `main` holds screen content.
+- `src/shared/layout/ScreenLayout/` is the default scrollable screen wrapper for product screens.
 - Screen content uses `--layout-padding-*` tokens rather than ad-hoc viewport math.
 
 Do not scatter viewport calculations across components or JavaScript.

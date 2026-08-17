@@ -1,20 +1,23 @@
 import { appConfig } from '@/config/appConfig';
+import { ScreenLayout } from '@/shared/layout/ScreenLayout/ScreenLayout';
 import { BootstrapUiShowcase } from './BootstrapUiShowcase';
 import { GameHost } from './GameHost';
 import styles from './BootstrapScreen.module.css';
 
 export function BootstrapScreen() {
   return (
-    <main className={styles.screen}>
-      <header className={styles.header}>
-        <p className={styles.kicker}>Engineering foundation</p>
-        <h1 className={styles.title}>{appConfig.appName}</h1>
-        <p className={styles.copy}>
-          React, design tokens, the error boundary, and the Phaser host are
-          running. Product features are not implemented yet.
-        </p>
-      </header>
-
+    <ScreenLayout
+      header={
+        <>
+          <p className={styles.kicker}>Engineering foundation</p>
+          <h1 className={styles.title}>{appConfig.appName}</h1>
+          <p className={styles.copy}>
+            React, design tokens, the error boundary, and the Phaser host are
+            running. Product features are not implemented yet.
+          </p>
+        </>
+      }
+    >
       <section
         className={styles.runtimePanel}
         aria-label="Runtime verification"
@@ -29,6 +32,6 @@ export function BootstrapScreen() {
       </section>
 
       <BootstrapUiShowcase />
-    </main>
+    </ScreenLayout>
   );
 }

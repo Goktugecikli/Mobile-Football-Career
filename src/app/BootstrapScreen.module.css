@@ -1,25 +1,3 @@
-.screen {
-  display: flex;
-  flex: 1;
-  flex-direction: column;
-  gap: var(--space-2xl);
-  min-height: 0;
-  min-width: 0;
-  padding: var(--layout-padding-top) var(--layout-padding-right)
-    var(--layout-padding-bottom) var(--layout-padding-left);
-  overflow-x: hidden;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-}
-
-.header {
-  display: flex;
-  flex-direction: column;
-  gap: var(--space-md);
-  flex-shrink: 0;
-  max-width: var(--layout-content-max-width);
-}
-
 .kicker {
   margin: 0;
   color: var(--color-text-accent);
@@ -50,7 +28,6 @@
   flex-direction: column;
   gap: var(--space-lg);
   flex-shrink: 0;
-  max-width: var(--layout-content-max-width);
   padding: var(--space-xl);
   background: var(--color-surface-primary);
   border: 1px solid var(--color-border-subtle);

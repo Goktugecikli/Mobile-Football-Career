@@ -21,7 +21,9 @@ nss-v2/
 │   ├── config/              Validated application configuration
 │   ├── core/                Framework-independent contracts
 │   ├── game/                Phaser host implementation
-│   ├── shared/ui/           Reusable UI primitives (Button, Card, Badge, etc.)
+│   ├── shared/
+│   │   ├── layout/          Reusable screen layout (ScreenLayout)
+│   │   └── ui/              Reusable UI primitives (Button, Card, Badge, etc.)
 │   ├── styles/              Design tokens and global CSS
 │   ├── main.tsx             Module entry
 │   └── vite-env.d.ts        Vite environment typings
@@ -42,7 +44,8 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | --- | --- |
 | `src/main.tsx` | Mounts React against `#root` |
 | `src/app/App.tsx` | Composition: error boundary + app shell + bootstrap screen |
-| `src/app/AppShell.tsx` | Root mobile layout shell |
+| `src/app/AppShell.tsx` | Application shell with optional header/footer chrome slots |
+| `src/shared/layout/ScreenLayout/ScreenLayout.tsx` | Default scrollable screen layout wrapper |
 | `src/app/AppErrorBoundary.tsx` | Render-error boundary |
 | `src/app/BootstrapScreen.tsx` | Minimal proof that React and tokens work |
 | `src/app/GameHost.tsx` | DOM parent + `GameSession` lifecycle |
@@ -63,6 +66,7 @@ Do not create these until they have real code.
 
 ```text
 src/features/<feature-name>/     Feature UI, hooks, and feature-local logic
+src/shared/layout/               Reusable screen layout (ScreenLayout)
 src/shared/ui/                   Reusable UI primitives (Button, Card, Badge, etc.)
 src/shared/native/               Capacitor adapters for core native contracts (when needed)
 src/shared/hooks/                Shared React hooks
