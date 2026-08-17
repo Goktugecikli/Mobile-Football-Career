@@ -33,6 +33,15 @@ On macOS, after web changes:
 
 Do not edit generated native files unless the change is an intentional native-shell decision. Prefer web source and `capacitor.config.ts`. Do not commit live-reload `server` settings.
 
+## Native platform verification
+
+| Platform | Project initialized | Runtime verified |
+| --- | --- | --- |
+| Android | Yes (`android/`) | Yes — debug build and launch on a physical device |
+| iOS | Yes (`ios/`) | Pending — requires macOS with Xcode 26.0+ |
+
+Native capability contracts and Capacitor adapters are not implemented yet. Application, feature, and game code must not import `@capacitor/*` directly; see `docs/ARCHITECTURE.md`.
+
 ## Commands
 
 ```bash

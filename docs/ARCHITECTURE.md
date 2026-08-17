@@ -42,8 +42,10 @@ Routing, client state libraries, persistence, and feature modules are deferred. 
 Capacitor is the native shell, not an application dependency surface.
 
 ```
-Application / feature code → native capability contract (core, when needed) → Capacitor adapter
+Application / feature / game code → native capability contract (core, when needed) → Capacitor adapter (shared/native) → Capacitor API
 ```
+
+Framework-independent capability contracts belong in `src/core` when a real capability is required. Capacitor implementations belong in `src/shared/native` (create when the first adapter exists). `src/app` or an owning feature composes the adapter; UI, features, and game depend only on the contract.
 
 React, feature, and game code must not import `@capacitor/*` directly. Only dedicated adapter code may call Capacitor APIs, and only after a core contract exists for that capability. Do not add adapters or plugin packages until a task requires them.
 
