@@ -43,7 +43,7 @@ export class AppErrorBoundary extends Component<
   }
 
   public override componentDidCatch(error: Error, info: ErrorInfo): void {
-    console.error(normalizeError(error), info.componentStack);
+    console.error(this.state.error ?? normalizeError(error), info.componentStack);
   }
 
   public override render(): ReactNode {

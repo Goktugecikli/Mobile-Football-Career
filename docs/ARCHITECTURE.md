@@ -16,7 +16,7 @@ This repository is the engineering foundation for a mobile-first football career
 
 ## Error handling
 
-Unexpected failures are normalized to `AppError` (`src/core/errors.ts`) so presentation code never consumes a raw `unknown` value. The React error boundary catches render failures. Effect-time failures (for example Phaser construction) are normalized at the call site and surfaced as `AppError`. There is no logging framework yet; uncaught render errors are still reported via `console.error` so they are not swallowed.
+Unexpected failures are normalized to `AppError` (`src/core/errors.ts`) so raw `unknown` values do not leak into UI. The React error boundary catches render failures and stores an `AppError`. Phaser host construction failures stay inside the game session: they are logged as `AppError` and reported to React as a typed `GameEvent` (`failed`), not by throwing across the React/Phaser boundary. There is no logging framework yet; unexpected failures are still reported via `console.error` so they are not swallowed.
 
 ## Configuration
 

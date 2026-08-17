@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { appConfig } from '@/config/appConfig';
-import type { ErrorCode } from '@/core/errors';
+import { ErrorCode } from '@/core/errors';
 import { createPhaserGameSession } from '@/game/createPhaserGameSession';
 import styles from './GameHost.module.css';
 
@@ -45,10 +45,16 @@ export function GameHost() {
     <section className={styles.host} aria-label="Game host">
       <p className={styles.status}>
         {status === 'failed'
-          ? `Game host failed (${errorCode ?? 'UNKNOWN'})`
+          ? `Game host failed (${errorCode ?? ErrorCode.UNKNOWN})`
           : `Game host: ${status}`}
       </p>
-      <div ref={parentRef} className={styles.viewport} />
+      <div
+        ref={parentRef}
+        className={styles.viewport}
+        style={{
+          aspectRatio: `${appConfig.game.width} / ${appConfig.game.height}`,
+        }}
+      />
     </section>
   );
 }
