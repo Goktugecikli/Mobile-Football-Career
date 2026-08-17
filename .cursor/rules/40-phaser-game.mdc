@@ -1,0 +1,17 @@
+---
+description: Phaser isolation and game-host integration rules
+globs: "src/game/**/*.ts,src/core/gameSession.ts,src/app/**/*.tsx"
+alwaysApply: false
+---
+
+# Phaser boundary
+
+`src/game` is the only layer that may import Phaser. React files must not import `phaser` or reach into Scene instances, cameras, display lists, or other runtime internals.
+
+Phaser code must not import React, read React state, or call React setters. Translate Phaser callbacks into typed `GameEvent` values and hand them to the `GameSession` listener.
+
+The public game API is `createPhaserGameSession` plus the `GameSession` contract. Keep Phaser.Game and Scene types inside `src/game`.
+
+Classes are expected for Scenes and for session lifetime. Do not add a generic game manager, event bus, or plugin framework before a concrete gameplay task needs it.
+
+Do not implement career, match, or gameplay systems in this layer until a task asks for them. `HostScene` exists to boot the runtime, not to host product features.

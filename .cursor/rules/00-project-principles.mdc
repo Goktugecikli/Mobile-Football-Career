@@ -1,0 +1,22 @@
+---
+description: Core engineering principles for all work in this repository
+alwaysApply: true
+---
+
+# Project principles
+
+Inspect existing code before adding a new implementation. Extend a current abstraction when it reasonably already covers the need.
+
+Do not duplicate business logic, utilities, components, hooks, services, configs, types, interfaces, constants, or styles.
+
+Avoid hardcoded domain or configuration values when the value represents configurable application or gameplay behavior. Do not promote implementation details or trivial literals into configuration.
+
+Follow SOLID pragmatically. Prefer high cohesion and low coupling. Make dependencies explicit. Keep public contracts small. Do not cross architectural boundaries for convenience.
+
+No global mutable state. No god classes, services, stores, or components. No speculative abstractions. No generic factories, managers, providers, wrappers, or base classes unless they remove a real duplication or coupling problem now.
+
+Avoid static utility classes when a function, module, injected dependency, or domain object is clearer.
+
+Before adding a dependency, confirm the project or platform does not already provide the capability.
+
+Never perform unrelated refactors during a scoped task. Never silently change established architecture.

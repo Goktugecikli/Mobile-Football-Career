@@ -1,0 +1,16 @@
+---
+description: Tooling, validation, and scoped-task workflow
+alwaysApply: true
+---
+
+# Quality and workflow
+
+Required scripts: `dev`, `build`, `lint`, `typecheck`. Run typecheck, lint, and production build after changes that can affect them, and fix failures caused by the task.
+
+Do not add Husky, commitlint, Storybook, Redux, Zustand, React Router, testing frameworks, UI libraries, or CSS frameworks unless a task explicitly requires them.
+
+Do not initialize Capacitor Android/iOS projects until a later task asks for them.
+
+Keep the task scoped. Do not describe unimplemented product features as if they exist. Do not start the next numbered task unless asked.
+
+Human documentation lives in `docs/` and should complement these rules rather than copy them. Follow `docs/DEVELOPMENT_GUIDE.md` for local workflow.

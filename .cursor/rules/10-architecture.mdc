@@ -1,0 +1,28 @@
+---
+description: Source layer ownership, dependency direction, and system boundaries
+alwaysApply: true
+---
+
+# Architecture
+
+Place new code in the owning layer. Do not create empty folders or placeholder implementations to preview a future tree.
+
+| Layer | Owns |
+| --- | --- |
+| `src/app` | Composition root: bootstrap, providers, React host wiring |
+| `src/config` | Validated application configuration; sole `import.meta.env` reader |
+| `src/core` | Framework-independent contracts and foundational concepts |
+| `src/features` | User-facing product features (create when a feature exists) |
+| `src/game` | Phaser runtime and scene implementation |
+| `src/shared` | Reusable application implementations used by more than one feature |
+| `src/styles` | Design tokens and global styling |
+
+Dependency direction: `app` may compose all layers. `features` and `shared` may use `core`, `config`, and `styles`. `game` may use `core` and received config values. `config` may use `core`. `core` depends on none of the other source layers. `styles` depends on none of them.
+
+React application code must not import Phaser scene internals. Phaser code must not import React or mutate React state. Communicate through `core` game contracts: application → game session → Phaser, and Phaser → typed game events → session → application.
+
+Read environment variables only inside `src/config`. Access configuration through `appConfig`, not scattered constants.
+
+Unexpected failures pass through the error model in `src/core/errors.ts`. Presentation code consumes `AppError`, never raw `unknown` exceptions.
+
+Record meaningful long-term architectural choices under `docs/DECISIONS` using the process in `docs/DECISIONS/README.md`.

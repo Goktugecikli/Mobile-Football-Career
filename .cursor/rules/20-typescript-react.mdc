@@ -1,0 +1,19 @@
+---
+description: TypeScript, React, and OOP conventions for application code
+globs: "**/*.{ts,tsx}"
+alwaysApply: false
+---
+
+# TypeScript and React
+
+Use strict TypeScript. Do not use `any`. Do not use non-null assertions unless technically unavoidable; document the reason beside the assertion. Prefer named exports unless a tool requires a default export.
+
+Do not duplicate domain types. Prefer a named union or const object over stringly-typed public APIs.
+
+React code uses functional components, hooks, and composition. Do not introduce React class components for OOP style. The error boundary is a class component only because React requires that API.
+
+Keep business and domain logic out of presentational components. Split container and presentation only when orchestration or state is genuinely distinct from rendering. Do not force the pair on every component.
+
+Type props explicitly. Create a shared component only when it is used in more than one place or is a deliberate design-system primitive.
+
+Use objects and classes where behavior and state form a domain concept, or where Phaser expects them. Do not force OOP onto React UI. Put interfaces on architectural boundaries, not on every trivial object. Use dependency inversion only to break a real coupling problem.

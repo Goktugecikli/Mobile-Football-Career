@@ -1,0 +1,56 @@
+:root {
+  color-scheme: dark;
+
+  --color-bg: #12141a;
+  --color-surface: #1b1e27;
+  --color-text: #e8eaef;
+  --color-text-muted: #9aa3b5;
+  --color-border: #2a3040;
+  --color-accent: #7c8cff;
+  --color-danger: #f07178;
+  --color-focus: #7c8cff;
+
+  --font-family-sans: system-ui, 'Segoe UI', Roboto, sans-serif;
+  --font-family-mono: ui-monospace, Consolas, monospace;
+
+  --font-size-sm: 0.875rem;
+  --font-size-md: 1rem;
+  --font-size-lg: 1.25rem;
+  --font-size-xl: 1.75rem;
+
+  --font-weight-regular: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+
+  --line-height-tight: 1.2;
+  --line-height-normal: 1.5;
+
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.5rem;
+  --space-6: 2rem;
+  --space-8: 3rem;
+
+  --radius-sm: 0.25rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 0.24);
+  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.28);
+
+  --duration-fast: 150ms;
+  --duration-normal: 250ms;
+  --easing-standard: cubic-bezier(0.2, 0, 0, 1);
+
+  --z-base: 0;
+  --z-raised: 10;
+  --z-overlay: 100;
+  --z-toast: 200;
+
+  /* Pixel equivalents: sm 480, md 768, lg 1024. Do not use these in @media. */
+  --breakpoint-sm: 30rem;
+  --breakpoint-md: 48rem;
+  --breakpoint-lg: 64rem;
+}
