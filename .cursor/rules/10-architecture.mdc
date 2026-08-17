@@ -21,7 +21,7 @@ Dependency direction: `app` may compose all layers. `features` and `shared` may 
 
 React application code must not import Phaser scene internals. Phaser code must not import React or mutate React state. Communicate through `core` game contracts: application → game session → Phaser, and Phaser → typed game events → session → application.
 
-Read environment variables only inside `src/config`. Access configuration through `appConfig`, not scattered constants.
+Read environment variables only inside `src/config`. Access configuration through `appConfig`, not scattered constants. Vite client variables must use the `VITE_` prefix and must never hold secrets.
 
 Unexpected failures pass through the error model in `src/core/errors.ts`. Presentation code consumes `AppError` or typed `GameEvent` failure codes, never raw `unknown` exceptions.
 

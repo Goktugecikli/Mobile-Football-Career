@@ -10,25 +10,15 @@ export type AppConfig = {
 };
 
 function readEnv(): {
-  readonly appName: string | undefined;
   readonly gameWidth: string | undefined;
   readonly gameHeight: string | undefined;
   readonly mode: string;
 } {
   return {
-    appName: import.meta.env.VITE_APP_NAME,
     gameWidth: import.meta.env.VITE_GAME_WIDTH,
     gameHeight: import.meta.env.VITE_GAME_HEIGHT,
     mode: import.meta.env.MODE,
   };
-}
-
-function readOptionalName(value: string | undefined, fallback: string): string {
-  if (value === undefined || value.trim() === '') {
-    return fallback;
-  }
-
-  return value.trim();
 }
 
 function parsePositiveInteger(
@@ -57,7 +47,7 @@ function createAppConfig(): AppConfig {
   const env = readEnv();
 
   return {
-    appName: readOptionalName(env.appName, 'NSS'),
+    appName: 'Mobile Football Career',
     environment: env.mode === 'production' ? 'production' : 'development',
     game: {
       width: parsePositiveInteger(env.gameWidth, 360, 'VITE_GAME_WIDTH'),
