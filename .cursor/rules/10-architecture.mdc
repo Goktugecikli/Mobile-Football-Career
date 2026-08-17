@@ -26,3 +26,5 @@ Read environment variables only inside `src/config`. Access configuration throug
 Unexpected failures pass through the error model in `src/core/errors.ts`. Presentation code consumes `AppError` or typed `GameEvent` failure codes, never raw `unknown` exceptions.
 
 Record meaningful long-term architectural choices under `docs/DECISIONS` using the process in `docs/DECISIONS/README.md`.
+
+React, feature, and game code must not import `@capacitor/*`. Native capabilities use application-owned contracts and dedicated adapters when a task requires them. See `docs/ARCHITECTURE.md`.

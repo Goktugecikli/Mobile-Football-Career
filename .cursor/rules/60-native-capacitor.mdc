@@ -1,0 +1,23 @@
+---
+description: Capacitor native-shell isolation and adapter rules
+globs: "src/**/*.{ts,tsx},capacitor.config.ts"
+alwaysApply: false
+---
+
+# Native and Capacitor
+
+`capacitor.config.ts` is the canonical native identity and web-asset location. Do not duplicate `appId`, `appName`, or `webDir` in application source.
+
+Only `capacitor.config.ts` and future dedicated adapter modules may import `@capacitor/*`. React, feature, and game code must not call Capacitor APIs directly.
+
+When a native capability is needed:
+
+1. Define a contract in `src/core`.
+2. Implement a Capacitor adapter in `src/shared/native` (create when the first adapter exists).
+3. Inject or compose the adapter from `src/app` or the owning feature.
+
+Do not add Capacitor plugins, adapters, or speculative interfaces for haptics, filesystem, storage, status bar, or similar until a task requires that capability.
+
+Do not add `server.url`, cleartext, or other live-reload settings to committed Capacitor config.
+
+Do not run `npx cap add android` or `npx cap add ios` unless a task explicitly asks for platform initialization.

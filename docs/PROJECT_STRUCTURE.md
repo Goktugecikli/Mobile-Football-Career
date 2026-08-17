@@ -10,6 +10,7 @@ nss-v2/
 ├── .github/workflows/       GitHub Actions (CI)
 ├── .gitattributes           Repository line-ending policy (LF)
 ├── .nvmrc                   Authoritative Node.js version
+├── capacitor.config.ts      Capacitor native-shell configuration
 ├── docs/                    Human-readable architecture docs
 │   └── DECISIONS/           ADR-style records (process only, for now)
 ├── public/                  Static assets served as-is
@@ -27,6 +28,7 @@ nss-v2/
 ├── tsconfig.app.json
 ├── tsconfig.node.json
 ├── vite.config.ts
+├── capacitor.config.ts
 └── eslint.config.js
 ```
 
@@ -54,6 +56,7 @@ Do not create these until they have real code.
 ```text
 src/features/<feature-name>/     Feature UI, hooks, and feature-local logic
 src/shared/components/           Design-system or otherwise shared components
+src/shared/native/               Capacitor adapters for core native contracts (when needed)
 src/shared/hooks/                Shared React hooks
 src/game/scenes/                 Additional Phaser scenes
 src/game/systems/                Phaser gameplay systems
