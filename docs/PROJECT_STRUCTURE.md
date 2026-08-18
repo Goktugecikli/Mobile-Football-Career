@@ -67,6 +67,9 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | `src/features/profileCreate/*` | Product-owned `PROFILE_CREATE` screen |
 | `src/features/initialTraining/*` | Product-owned `INITIAL_TRAINING` screen |
 | `src/features/teamAssignment/*` | Product-owned `TEAM_ASSIGNMENT` screen |
+| `src/features/gameHome/*` | Product-owned `GAME_HOME` screen |
+| `src/features/matchEntry/*` | Product-owned `MATCH_ENTRY` screen |
+| `src/features/matchPreparation/*` | Product-owned `MATCH_PREPARATION` screen |
 
 ## Intended later locations
 

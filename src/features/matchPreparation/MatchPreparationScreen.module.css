@@ -1,0 +1,92 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header .backButton[data-variant='ghost'] {
+  flex-shrink: 0;
+  min-width: var(--size-control-min-height);
+  padding-inline: var(--space-md);
+  border-color: var(--color-border-default);
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
+}
+
+.title {
+  margin: 0;
+  min-width: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.energy,
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.energy {
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-sm);
+}
+
+.heading {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.itemRow {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  min-width: 0;
+  min-height: var(--size-control-min-height);
+  padding: var(--space-sm) var(--space-lg);
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-sm);
+}
+
+.itemIcon {
+  flex-shrink: 0;
+  width: var(--space-xl);
+  height: var(--space-xl);
+  border-radius: var(--radius-md);
+  background: var(--color-accent-muted);
+  box-shadow: inset 0 0 0 1px
+    color-mix(in srgb, var(--color-accent-primary) 22%, transparent);
+}
+
+.itemName {
+  flex: 1;
+  min-width: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.itemQuantity {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.startCta {
+  min-height: calc(var(--size-control-min-height) + var(--space-sm));
+  font-size: var(--font-size-md);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}

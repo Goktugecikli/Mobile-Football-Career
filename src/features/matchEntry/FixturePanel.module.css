@@ -1,0 +1,99 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.heading {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-elevated);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+  padding: var(--space-md) var(--space-lg);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.row[data-highlighted='true'] {
+  background: var(--color-accent-muted);
+  box-shadow: inset var(--space-xs) 0 0 var(--color-accent-primary);
+}
+
+.side {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  min-width: 0;
+}
+
+.side:last-child {
+  justify-content: flex-end;
+}
+
+.crest {
+  flex-shrink: 0;
+  width: var(--space-xl);
+  aspect-ratio: 4 / 5;
+  clip-path: polygon(50% 0%, 100% 18%, 86% 100%, 14% 100%, 0% 18%);
+  background: color-mix(
+    in srgb,
+    var(--color-accent-primary) 16%,
+    var(--color-surface-secondary)
+  );
+}
+
+.team {
+  overflow: hidden;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.versus {
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-bold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.note {
+  margin: 0;
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-xs);
+}
+
+@media (max-width: 30rem) {
+  .row {
+    padding-inline: var(--space-md);
+  }
+}

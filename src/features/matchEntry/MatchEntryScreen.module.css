@@ -1,0 +1,27 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header .backButton[data-variant='ghost'] {
+  flex-shrink: 0;
+  min-width: var(--size-control-min-height);
+  padding-inline: var(--space-md);
+  border-color: var(--color-border-default);
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
+}
+
+.title {
+  margin: 0;
+  min-width: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.continue {
+  letter-spacing: var(--letter-spacing-wide);
+}
