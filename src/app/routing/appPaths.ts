@@ -4,6 +4,9 @@ export const appPaths = {
   profileCreate: '/profile-create',
   initialTraining: '/initial-training',
   teamAssignment: '/team-assignment',
+  gameHome: '/game-home',
+  matchEntry: '/match-entry',
+  matchPreparation: '/match-preparation',
 } as const;
 
 export type CareerOnboardingState = {

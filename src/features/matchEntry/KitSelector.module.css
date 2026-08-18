@@ -1,0 +1,73 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  min-width: 0;
+}
+
+.heading {
+  margin: 0;
+  color: var(--color-text-secondary);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.choices {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.choice {
+  display: grid;
+  place-items: center;
+  width: calc(var(--size-control-min-height) + var(--space-xl));
+  height: calc(var(--size-control-min-height) + var(--space-xl));
+  padding: 0;
+  border: 1px solid var(--color-border-default);
+  border-radius: var(--radius-lg);
+  background: var(--color-surface-elevated);
+  cursor: pointer;
+}
+
+.choice[aria-pressed='true'] {
+  border-color: var(--color-accent-primary);
+  box-shadow: var(--shadow-glow-action-active);
+}
+
+.choice:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+}
+
+.shirt {
+  width: var(--space-2xl);
+  height: calc(var(--space-2xl) + var(--space-xs));
+  clip-path: polygon(
+    18% 14%,
+    32% 0,
+    68% 0,
+    82% 14%,
+    100% 24%,
+    86% 36%,
+    86% 100%,
+    14% 100%,
+    14% 36%,
+    0 24%
+  );
+  background: var(--color-surface-secondary);
+}
+
+.shirt[data-tone='a'] {
+  background: color-mix(
+    in srgb,
+    var(--color-accent-primary) 35%,
+    var(--color-surface-secondary)
+  );
+}
+
+.shirt[data-tone='b'] {
+  background: var(--color-surface-inset);
+  box-shadow: inset 0 0 0 1px var(--color-border-default);
+}

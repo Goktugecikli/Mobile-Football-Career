@@ -48,7 +48,11 @@ export function TeamAssignmentScreen() {
         </div>
       </section>
 
-      <Button fullWidth className={styles.continue} disabled>
+      <Button
+        fullWidth
+        className={styles.continue}
+        onClick={() => navigate(appPaths.gameHome, { state: location.state })}
+      >
         Devam
       </Button>
     </ScreenLayout>

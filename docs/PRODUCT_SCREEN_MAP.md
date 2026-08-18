@@ -51,9 +51,9 @@ ENTRY
 | `PROFILE_CREATE` | Profile Create | Full Screen | `CAREER_SELECT` | `INITIAL_TRAINING` | Implemented |
 | `INITIAL_TRAINING` | Initial Training | Full Screen | `PROFILE_CREATE` | `TEAM_ASSIGNMENT` | Implemented |
 | `TEAM_ASSIGNMENT` | Team Assignment | Full Screen | `INITIAL_TRAINING` | `GAME_HOME` | Implemented |
-| `GAME_HOME` | Game Home | Full Screen | `TEAM_ASSIGNMENT` or existing career resume flow | `MATCH_ENTRY` | Specified, Not Implemented |
-| `MATCH_ENTRY` | Match Entry | Full Screen | `GAME_HOME` | `MATCH_PREPARATION` | Specified, Not Implemented |
-| `MATCH_PREPARATION` | Match Preparation | Full Screen | `MATCH_ENTRY` | `MATCH_GAMEPLAY` | Specified, Not Implemented |
+| `GAME_HOME` | Game Home | Full Screen | `TEAM_ASSIGNMENT` or existing career resume flow | `MATCH_ENTRY` | Implemented |
+| `MATCH_ENTRY` | Match Entry | Full Screen | `GAME_HOME` | `MATCH_PREPARATION` | Implemented |
+| `MATCH_PREPARATION` | Match Preparation | Full Screen | `MATCH_ENTRY` | `MATCH_GAMEPLAY` | Implemented |
 | `MATCH_GAMEPLAY` | Match Gameplay | Gameplay | `MATCH_PREPARATION` | Not yet defined | Specified as future placeholder, Not Implemented |
 
 ## Screen Definitions
