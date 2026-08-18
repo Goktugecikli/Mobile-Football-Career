@@ -1,4 +1,4 @@
-import { appPaths } from '@/app/routing/appPaths';
+import { appPaths, type CareerOnboardingState } from '@/app/routing/appPaths';
 import { Button } from '@/shared/ui/Button/Button';
 import { ScreenLayout } from '@/shared/layout/ScreenLayout/ScreenLayout';
 import { useNavigate } from 'react-router-dom';
@@ -28,7 +28,14 @@ export function CareerSelectScreen() {
     >
       <section className={styles.slots} aria-label="Kariyer slotları">
         {slotNumbers.map((slotNumber) => (
-          <CareerSlot key={slotNumber} slotNumber={slotNumber} />
+          <CareerSlot
+            key={slotNumber}
+            slotNumber={slotNumber}
+            onCreate={() => {
+              const state: CareerOnboardingState = { slotNumber };
+              navigate(appPaths.profileCreate, { state });
+            }}
+          />
         ))}
       </section>
     </ScreenLayout>

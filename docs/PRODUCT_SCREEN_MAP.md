@@ -48,9 +48,9 @@ ENTRY
 | --- | --- | --- | --- | --- | --- |
 | `ENTRY` | Entry | Full Screen | None | `CAREER_SELECT` | Implemented |
 | `CAREER_SELECT` | Career Select | Full Screen | `ENTRY` | `PROFILE_CREATE` for empty slot; existing career flow eventually returns to `GAME_HOME` | Implemented |
-| `PROFILE_CREATE` | Profile Create | Full Screen | `CAREER_SELECT` | `INITIAL_TRAINING` | Specified, Not Implemented |
-| `INITIAL_TRAINING` | Initial Training | Full Screen | `PROFILE_CREATE` | `TEAM_ASSIGNMENT` | Specified, Not Implemented |
-| `TEAM_ASSIGNMENT` | Team Assignment | Full Screen | `INITIAL_TRAINING` | `GAME_HOME` | Specified, Not Implemented |
+| `PROFILE_CREATE` | Profile Create | Full Screen | `CAREER_SELECT` | `INITIAL_TRAINING` | Implemented |
+| `INITIAL_TRAINING` | Initial Training | Full Screen | `PROFILE_CREATE` | `TEAM_ASSIGNMENT` | Implemented |
+| `TEAM_ASSIGNMENT` | Team Assignment | Full Screen | `INITIAL_TRAINING` | `GAME_HOME` | Implemented |
 | `GAME_HOME` | Game Home | Full Screen | `TEAM_ASSIGNMENT` or existing career resume flow | `MATCH_ENTRY` | Specified, Not Implemented |
 | `MATCH_ENTRY` | Match Entry | Full Screen | `GAME_HOME` | `MATCH_PREPARATION` | Specified, Not Implemented |
 | `MATCH_PREPARATION` | Match Preparation | Full Screen | `MATCH_ENTRY` | `MATCH_GAMEPLAY` | Specified, Not Implemented |
@@ -180,7 +180,6 @@ Show the result of the player's initial evaluation.
 - Team assignment algorithm
 - Salary algorithm
 - Whether the user can reject or change the assigned team
-- Presentation layout
 - Additional contract information
 
 ### `GAME_HOME`
@@ -375,7 +374,6 @@ These are product-state areas implied by approved screens and flows. They are re
 - How training affects salary
 - Whether the user can reject or change the assigned team
 - Additional contract information
-- Presentation layout
 
 ### Main career hub
 - Exact additional status or resource boxes besides energy
