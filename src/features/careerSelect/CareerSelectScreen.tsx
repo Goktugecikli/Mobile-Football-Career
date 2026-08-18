@@ -9,11 +9,14 @@ export function CareerSelectScreen() {
     <ScreenLayout
       header={
         <div className={styles.header}>
+          <div className={styles.mark} aria-hidden="true">
+            <span className={styles.markBall} />
+          </div>
           <h1 className={styles.title}>Kariyer Seçimi</h1>
         </div>
       }
     >
-      <section className={styles.screen} aria-label="Kariyer slotları">
+      <section className={styles.slots} aria-label="Kariyer slotları">
         {slotNumbers.map((slotNumber) => (
           <CareerSlot key={slotNumber} slotNumber={slotNumber} />
         ))}

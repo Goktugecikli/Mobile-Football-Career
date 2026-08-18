@@ -5,9 +5,12 @@ export type CardProps = {
   readonly children: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 
-export function Card({ children, ...rest }: CardProps) {
+export function Card({ children, className, ...rest }: CardProps) {
   return (
-    <article className={styles.card} {...rest}>
+    <article
+      className={[styles.card, className].filter(Boolean).join(' ')}
+      {...rest}
+    >
       {children}
     </article>
   );

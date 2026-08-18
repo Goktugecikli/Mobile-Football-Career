@@ -1,12 +1,30 @@
 .slot {
+  position: relative;
+  overflow: hidden;
   gap: var(--space-lg);
   min-width: 0;
   background:
     linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-surface-secondary) 84%, transparent) 0%,
-      color-mix(in srgb, var(--color-surface-primary) 96%, transparent) 100%
+      165deg,
+      color-mix(in srgb, var(--color-accent-muted) 70%, var(--color-surface-secondary))
+        0%,
+      var(--color-surface-primary) 46%,
+      var(--color-surface-primary) 100%
     );
+  box-shadow: var(--shadow-md), var(--shadow-inset);
+}
+
+.slot::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    color-mix(in srgb, var(--color-accent-strong) 72%, transparent),
+    transparent
+  );
 }
 
 .header {
@@ -19,36 +37,52 @@
 
 .slotLabel {
   color: var(--color-text-primary);
-  font-size: var(--font-size-md);
-  font-weight: var(--font-weight-semibold);
-}
-
-.status {
-  color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
+  text-transform: uppercase;
 }
 
-.placeholder {
+.preview {
+  display: grid;
+  min-width: 0;
+}
+
+.emptyMark {
   display: grid;
   place-items: center;
-  min-height: 6.5rem;
-  border: 1px dashed color-mix(in srgb, var(--color-border-default) 82%, transparent);
+  min-height: calc(var(--space-3xl) * 2 + var(--space-lg));
   border-radius: var(--radius-lg);
   background:
     radial-gradient(
-      circle at 50% 30%,
-      color-mix(in srgb, var(--color-accent-muted) 75%, transparent) 0%,
-      transparent 68%
+      circle at 50% 28%,
+      color-mix(in srgb, var(--color-accent-muted) 90%, transparent) 0%,
+      transparent 64%
     ),
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--color-surface-inset) 88%, transparent) 0%,
-      color-mix(in srgb, var(--color-surface-secondary) 92%, transparent) 100%
+      color-mix(in srgb, var(--color-surface-secondary) 70%, transparent),
+      var(--color-surface-inset)
     );
+  box-shadow: var(--shadow-inset);
 }
 
-.plus {
+.plusRing {
+  display: grid;
+  place-items: center;
+  width: var(--space-3xl);
+  height: var(--space-3xl);
+  border: 1px solid color-mix(in srgb, var(--color-accent-strong) 40%, transparent);
+  border-radius: var(--radius-full);
   color: var(--color-text-accent);
-  font-size: 2rem;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-semibold);
   line-height: 1;
+  box-shadow: var(--shadow-glow-accent);
+}
+
+@media (max-height: 44rem) {
+  .emptyMark {
+    min-height: calc(var(--space-3xl) + var(--space-2xl) + var(--space-sm));
+  }
 }

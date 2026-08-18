@@ -1,147 +1,186 @@
 .screen {
-  display: flex;
-  flex: 1;
-  min-height: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  padding: var(--layout-padding-top) var(--layout-padding-right)
-    var(--layout-padding-bottom) var(--layout-padding-left);
-}
-
-.hero {
   position: relative;
   display: flex;
   flex: 1;
-  width: 100%;
-  max-width: var(--layout-content-max-width);
-  min-height: max(32rem, calc(var(--layout-min-height) - var(--space-3xl)));
-  margin-inline: auto;
-  align-items: flex-end;
-  justify-content: center;
-  overflow: hidden;
-  border: 1px solid var(--color-border-subtle);
-  border-radius: var(--radius-xl);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-surface-secondary) 72%, transparent) 0%,
-      color-mix(in srgb, var(--color-bg-subtle) 82%, transparent) 100%
-    ),
-    radial-gradient(
-      circle at 50% 18%,
-      color-mix(in srgb, var(--color-status-success) 22%, transparent) 0%,
-      transparent 38%
-    ),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-bg-subtle) 72%, transparent) 0%,
-      var(--color-bg-app) 100%
-    );
-  box-shadow: var(--shadow-md), var(--shadow-inset);
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
-.background {
+.atmosphere {
   position: absolute;
   inset: 0;
   overflow: hidden;
+  background:
+    radial-gradient(
+      ellipse 80% 42% at 50% -8%,
+      color-mix(in srgb, var(--color-accent-primary) 28%, transparent),
+      transparent 62%
+    ),
+    radial-gradient(
+      ellipse 70% 50% at 50% 108%,
+      color-mix(in srgb, var(--color-accent-muted) 90%, transparent),
+      transparent 58%
+    ),
+    linear-gradient(
+      180deg,
+      var(--color-bg-subtle) 0%,
+      var(--color-bg-app) 46%,
+      var(--color-bg-subtle) 100%
+    );
 }
 
-.backgroundGlow {
+.vignette {
   position: absolute;
-  inset: -20% -10% auto;
-  height: 60%;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-bg-subtle) 18%, transparent) 0%,
+      transparent 28%,
+      transparent 58%,
+      color-mix(in srgb, var(--color-bg-subtle) 88%, transparent) 100%
+    ),
+    radial-gradient(
+      ellipse 90% 80% at 50% 40%,
+      transparent 42%,
+      color-mix(in srgb, var(--color-bg-subtle) 72%, transparent) 100%
+    );
+}
+
+.spotLeft,
+.spotRight {
+  position: absolute;
+  top: -8%;
+  width: 42%;
+  height: 48%;
   background: radial-gradient(
-    circle at 50% 20%,
-    color-mix(in srgb, var(--color-accent-primary) 18%, transparent) 0%,
-    transparent 65%
+    ellipse at 50% 0%,
+    color-mix(in srgb, var(--color-accent-strong) 32%, transparent) 0%,
+    transparent 70%
   );
+  animation: spotlight-breathe 5.6s var(--easing-standard) infinite;
 }
 
-.pitchLines {
+.spotLeft {
+  left: -6%;
+  transform: rotate(-12deg);
+}
+
+.spotRight {
+  right: -6%;
+  transform: rotate(12deg);
+  animation-delay: calc(var(--duration-normal) * 4);
+}
+
+.tunnel {
   position: absolute;
-  inset: 8% 6% 28%;
-  border: 1px solid color-mix(in srgb, var(--color-status-success) 28%, transparent);
-  border-radius: var(--radius-xl);
+  left: 50%;
+  top: 8%;
+  width: min(92%, 28rem);
+  height: 46%;
+  transform: translateX(-50%);
+  border: 1px solid color-mix(in srgb, var(--color-accent-strong) 18%, transparent);
+  border-bottom: 0;
+  border-radius: var(--radius-xl) var(--radius-xl) 0 0;
+  background:
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-surface-overlay) 55%, transparent) 0%,
+      transparent 78%
+    );
+  box-shadow: var(--shadow-inset);
+  opacity: 0.72;
+}
+
+.pitch {
+  position: absolute;
+  left: 50%;
+  bottom: 22%;
+  width: 128%;
+  height: 48%;
+  transform: translateX(-50%) perspective(32rem) rotateX(64deg);
+  transform-origin: center bottom;
+  border: 1px solid color-mix(in srgb, var(--color-accent-strong) 34%, transparent);
+  background:
+    repeating-linear-gradient(
+      90deg,
+      color-mix(in srgb, var(--color-status-success) 10%, transparent) 0 10%,
+      color-mix(in srgb, var(--color-bg-subtle) 42%, transparent) 10% 20%
+    ),
+    linear-gradient(
+      180deg,
+      color-mix(in srgb, var(--color-accent-muted) 40%, transparent),
+      color-mix(in srgb, var(--color-surface-inset) 70%, transparent)
+    );
   opacity: 0.55;
 }
 
-.pitchLines::before,
-.pitchLines::after {
-  content: '';
+.pitchMid {
   position: absolute;
   left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: color-mix(in srgb, var(--color-text-primary) 28%, transparent);
   transform: translateX(-50%);
-  border: 1px solid color-mix(in srgb, var(--color-status-success) 22%, transparent);
 }
 
-.pitchLines::before {
-  inset: 0 auto 0;
-}
-
-.pitchLines::after {
+.pitchCircle {
+  position: absolute;
+  left: 50%;
   top: 50%;
-  width: 5.25rem;
-  height: 5.25rem;
+  width: 22%;
+  aspect-ratio: 1;
+  border: 1px solid color-mix(in srgb, var(--color-text-primary) 26%, transparent);
   border-radius: var(--radius-full);
   transform: translate(-50%, -50%);
 }
 
-.animationStage {
+.goal {
   position: absolute;
-  inset: 16% 0 auto;
-  display: grid;
-  place-items: center;
-  min-height: 15rem;
+  left: 50%;
+  top: 16%;
+  width: min(38%, 11rem);
+  height: 14%;
+  transform: translateX(-50%);
+  border: 2px solid color-mix(in srgb, var(--color-text-primary) 42%, transparent);
+  border-bottom: 0;
+  border-radius: var(--radius-xs) var(--radius-xs) 0 0;
+  box-shadow: 0 0 2rem color-mix(in srgb, var(--color-accent-primary) 22%, transparent);
+  opacity: 0.78;
 }
 
-.animationOrbit {
+.ball {
   position: absolute;
-  width: min(58vw, 18rem);
+  left: 50%;
+  top: 34%;
+  width: clamp(4.5rem, 16vw, 6.25rem);
   aspect-ratio: 1;
-  border: 1px solid color-mix(in srgb, var(--color-accent-strong) 26%, transparent);
+  transform: translateX(-50%);
   border-radius: var(--radius-full);
-  opacity: 0.7;
-  animation: orbit-pulse 4s ease-in-out infinite;
-}
-
-.ballCore {
-  position: relative;
-  width: clamp(4.75rem, 18vw, 6.5rem);
-  aspect-ratio: 1;
-  border-radius: var(--radius-full);
-  border: 1px solid color-mix(in srgb, var(--color-text-primary) 20%, transparent);
+  border: 1px solid color-mix(in srgb, var(--color-text-primary) 22%, transparent);
   background:
     radial-gradient(
-      circle at 35% 32%,
-      rgb(255 255 255 / 0.95) 0%,
-      rgb(255 255 255 / 0.7) 24%,
-      transparent 25%
+      circle at 32% 28%,
+      color-mix(in srgb, var(--color-text-primary) 88%, transparent) 0 14%,
+      transparent 22%
     ),
-    radial-gradient(
-      circle at 50% 40%,
-      color-mix(in srgb, var(--color-surface-secondary) 75%, white) 0%,
-      color-mix(in srgb, var(--color-surface-primary) 82%, black) 100%
+    repeating-conic-gradient(
+      from 18deg,
+      color-mix(in srgb, var(--color-surface-inset) 88%, var(--color-text-primary)) 0 28deg,
+      color-mix(in srgb, var(--color-text-primary) 78%, var(--color-surface-primary)) 28deg 60deg
     );
   box-shadow:
-    0 0 0 0.5rem color-mix(in srgb, var(--color-accent-muted) 38%, transparent),
-    0 1.25rem 2.5rem rgb(0 0 0 / 0.35);
-  animation: ball-float 3.6s ease-in-out infinite;
+    var(--shadow-lg),
+    0 0 0 0.75rem color-mix(in srgb, var(--color-accent-muted) 70%, transparent);
+  animation: ball-drift 4.8s var(--easing-standard) infinite;
 }
 
-.ballCore::before,
-.ballCore::after {
-  content: '';
-  position: absolute;
-  inset: 22%;
-  border-radius: var(--radius-full);
-  border: 1px solid color-mix(in srgb, var(--color-text-primary) 16%, transparent);
-}
-
-.ballCore::after {
-  inset: 36% 16%;
-}
-
-.content {
+.stage {
   position: relative;
   z-index: var(--z-raised);
   display: flex;
@@ -150,7 +189,11 @@
   justify-content: space-between;
   gap: var(--space-3xl);
   width: 100%;
-  padding: clamp(var(--space-xl), 5vw, var(--space-3xl));
+  max-width: var(--layout-content-max-width);
+  min-height: 0;
+  margin-inline: auto;
+  padding: var(--layout-padding-top) var(--layout-padding-right)
+    var(--layout-padding-bottom) var(--layout-padding-left);
 }
 
 .brand {
@@ -158,47 +201,62 @@
   flex-direction: column;
   align-items: center;
   gap: var(--space-xl);
-  padding-top: var(--space-lg);
+  padding-top: var(--space-md);
 }
 
 .logoArea {
   display: grid;
   place-items: center;
-  width: clamp(5.5rem, 22vw, 7rem);
+  width: clamp(5.75rem, 22vw, 7.25rem);
   aspect-ratio: 1;
+  filter: drop-shadow(
+    0 0 1.75rem color-mix(in srgb, var(--color-accent-primary) 42%, transparent)
+  );
 }
 
-.logoMarkOuter {
+.crest {
   display: grid;
   place-items: center;
   width: 100%;
   height: 100%;
-  border-radius: 30%;
-  border: 1px solid color-mix(in srgb, var(--color-text-primary) 18%, transparent);
-  background: color-mix(in srgb, var(--color-surface-overlay) 92%, transparent);
-  box-shadow: var(--shadow-glow-accent), var(--shadow-inset);
-}
-
-.logoMarkInner {
-  width: 54%;
-  height: 54%;
-  border-radius: var(--radius-full);
-  border: 1px solid color-mix(in srgb, var(--color-status-success) 36%, transparent);
+  clip-path: polygon(50% 4%, 96% 22%, 88% 74%, 50% 100%, 12% 74%, 4% 22%);
   background:
     linear-gradient(
       180deg,
-      color-mix(in srgb, var(--color-status-success) 18%, transparent) 0%,
-      color-mix(in srgb, var(--color-accent-muted) 70%, transparent) 100%
+      color-mix(in srgb, var(--color-accent-strong) 55%, var(--color-surface-secondary)) 0%,
+      var(--color-surface-inset) 100%
+    );
+  box-shadow: var(--shadow-inset);
+}
+
+.crestBall {
+  width: 46%;
+  aspect-ratio: 1;
+  border-radius: var(--radius-full);
+  border: 1px solid color-mix(in srgb, var(--color-text-primary) 35%, transparent);
+  background:
+    radial-gradient(
+      circle at 35% 30%,
+      color-mix(in srgb, var(--color-text-primary) 70%, transparent) 0 16%,
+      transparent 18%
+    ),
+    repeating-conic-gradient(
+      from 20deg,
+      var(--color-surface-inset) 0 30deg,
+      color-mix(in srgb, var(--color-text-primary) 70%, var(--color-surface-primary))
+        30deg 58deg
     );
 }
 
 .title {
   margin: 0;
   max-width: 12ch;
-  text-align: center;
-  font-size: clamp(var(--font-size-xl), 7vw, 3rem);
-  line-height: 1;
+  color: var(--color-text-primary);
+  font-size: clamp(var(--font-size-xl), 7.2vw, var(--font-size-2xl));
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
+  text-align: center;
   text-wrap: balance;
 }
 
@@ -207,54 +265,110 @@
   flex-direction: column;
   gap: var(--space-md);
   width: 100%;
-  margin-top: auto;
+  padding: var(--space-lg);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: var(--radius-xl);
+  background: color-mix(in srgb, var(--color-surface-overlay) 88%, transparent);
+  box-shadow: var(--shadow-lg), var(--shadow-inset);
+}
+
+.playCta {
+  min-height: calc(var(--size-control-min-height) + var(--space-sm));
+  font-size: var(--font-size-md);
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+  box-shadow: var(--shadow-glow-accent);
+}
+
+.secondaryActions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--space-md);
+  min-width: 0;
 }
 
 @media (min-width: 48rem) {
-  .content {
-    justify-content: flex-end;
-  }
-
   .brand {
     padding-top: var(--space-2xl);
+  }
+
+  .actions {
+    padding: var(--space-xl);
   }
 }
 
 @media (max-height: 44rem) {
-  .hero {
-    min-height: 28rem;
+  .stage {
+    gap: var(--space-xl);
+    min-height: 0;
   }
 
-  .animationStage {
-    inset: 10% 0 auto;
-    min-height: 11rem;
+  .brand {
+    gap: var(--space-lg);
+    padding-top: 0;
   }
 
-  .content {
-    gap: var(--space-2xl);
-  }
-}
-
-@keyframes ball-float {
-  0%,
-  100% {
-    transform: translateY(0) scale(1);
+  .pitch,
+  .goal {
+    opacity: 0.32;
   }
 
-  50% {
-    transform: translateY(-0.5rem) scale(1.02);
+  .ball {
+    top: 28%;
   }
 }
 
-@keyframes orbit-pulse {
+@media (orientation: landscape) and (max-height: 30rem) {
+  .stage {
+    flex-direction: row;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: var(--space-xl);
+  }
+
+  .brand {
+    align-items: flex-start;
+  }
+
+  .title {
+    text-align: left;
+  }
+
+  .actions {
+    max-width: 22rem;
+    flex: 1;
+  }
+
+  .tunnel,
+  .pitch,
+  .goal {
+    opacity: 0.28;
+  }
+
+  .ball {
+    top: 22%;
+    left: 28%;
+  }
+}
+
+@keyframes spotlight-breathe {
   0%,
   100% {
-    transform: scale(0.96);
-    opacity: 0.5;
+    opacity: 0.55;
   }
 
   50% {
-    transform: scale(1);
-    opacity: 0.8;
+    opacity: 0.95;
+  }
+}
+
+@keyframes ball-drift {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+
+  50% {
+    transform: translateX(-50%) translateY(calc(var(--space-sm) * -1));
   }
 }

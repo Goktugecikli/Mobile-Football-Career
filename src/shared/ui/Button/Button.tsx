@@ -17,6 +17,7 @@ export function Button({
   disabled,
   children,
   type = 'button',
+  className,
   ...rest
 }: ButtonProps) {
   const isDisabled = disabled === true || loading;
@@ -24,7 +25,7 @@ export function Button({
   return (
     <button
       type={type}
-      className={styles.button}
+      className={[styles.button, className].filter(Boolean).join(' ')}
       data-variant={variant}
       data-full-width={fullWidth ? true : undefined}
       disabled={isDisabled}
