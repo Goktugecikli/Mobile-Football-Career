@@ -4,6 +4,12 @@
   gap: var(--space-lg);
   min-width: 0;
   padding: var(--space-lg);
+  cursor: pointer;
+}
+
+.slot:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
 }
 
 .lead {
@@ -53,13 +59,15 @@
   line-height: var(--line-height-snug);
 }
 
-.slot .forward[data-variant='ghost']:disabled {
+.forward {
+  display: grid;
   flex-shrink: 0;
+  place-items: center;
   width: var(--size-control-min-height);
   min-width: var(--size-control-min-height);
-  padding: 0;
+  height: var(--size-control-min-height);
+  border-radius: var(--radius-md);
   background: var(--color-accent-muted);
-  border-color: transparent;
   color: var(--color-text-accent);
   font-size: var(--font-size-xl);
   line-height: 1;

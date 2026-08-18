@@ -64,6 +64,9 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | `src/app/BootstrapUiShowcase.tsx` | Temporary bootstrap preview of UI primitives |
 | `src/features/entry/*` | Product-owned `ENTRY` screen |
 | `src/features/careerSelect/*` | Product-owned `CAREER_SELECT` screen and slot UI |
+| `src/features/profileCreate/*` | Product-owned `PROFILE_CREATE` screen |
+| `src/features/initialTraining/*` | Product-owned `INITIAL_TRAINING` screen |
+| `src/features/teamAssignment/*` | Product-owned `TEAM_ASSIGNMENT` screen |
 
 ## Intended later locations
 

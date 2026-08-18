@@ -1,0 +1,124 @@
+.header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.header .backButton[data-variant='ghost'] {
+  flex-shrink: 0;
+  min-width: var(--size-control-min-height);
+  padding-inline: var(--space-md);
+  border-color: var(--color-border-default);
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
+}
+
+.title {
+  margin: 0;
+  min-width: 0;
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2xl);
+  width: 100%;
+  min-width: 0;
+}
+
+.sheet {
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--space-lg);
+  min-width: 0;
+  min-height: calc(var(--size-control-min-height) + var(--space-md));
+  padding: var(--space-sm) var(--space-lg);
+  border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.row:last-child {
+  border-bottom: 0;
+}
+
+.fieldLabel {
+  flex-shrink: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+}
+
+.selectControl {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: var(--space-sm);
+  min-width: 0;
+  min-height: var(--size-control-min-height);
+  margin-left: auto;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-accent);
+  font: inherit;
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+}
+
+.selectControl:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.selectValue {
+  color: var(--color-text-accent);
+}
+
+.chevron {
+  color: var(--color-text-tertiary);
+  font-size: var(--font-size-lg);
+  line-height: 1;
+}
+
+.input {
+  flex: 1;
+  min-width: 0;
+  min-height: var(--size-control-min-height);
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--color-text-primary);
+  font: inherit;
+  font-weight: var(--font-weight-medium);
+  text-align: right;
+}
+
+.input:focus-visible {
+  outline: 2px solid var(--color-border-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.continue {
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+@media (orientation: landscape) and (max-height: 30rem) {
+  .form {
+    gap: var(--space-lg);
+  }
+
+  .row {
+    min-height: var(--size-control-min-height);
+  }
+}
