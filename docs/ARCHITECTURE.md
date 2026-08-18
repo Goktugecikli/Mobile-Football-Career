@@ -6,7 +6,7 @@ This repository is the engineering foundation for Mobile Football Career. The cu
 
 - **app** — Composition root. Mounts React, the error boundary, bootstrap UI, and the Phaser host. This is the only React layer that should construct a `GameSession`.
 - **config** — One validated configuration object. The rest of the application reads `appConfig`. Only this layer reads environment variables.
-- **core** — Framework-independent contracts. Today that is the error model and the game-session contract. Core must not import React, Phaser, or CSS.
+- **core** — Framework-independent contracts. Today that is the error model, career-state contracts, and the game-session contract. Core must not import React, Phaser, or CSS.
 - **features** — Product capabilities (career, club, matches, and so on). Created when a feature is implemented, not before.
 - **game** — Phaser runtime. Owns `Phaser.Game`, scenes, and translation of Phaser callbacks into typed game events.
 - **shared** — Application implementations reused by more than one feature. Created when reuse is real.
@@ -16,7 +16,7 @@ This repository is the engineering foundation for Mobile Football Career. The cu
 
 ## Error handling
 
-Unexpected failures are normalized to `AppError` (`src/core/errors.ts`) so raw `unknown` values do not leak into UI. The React error boundary catches render failures and stores an `AppError`. Phaser host construction failures stay inside the game session: they are logged as `AppError` and reported to React as a typed `GameEvent` (`failed`), not by throwing across the React/Phaser boundary. There is no logging framework yet; unexpected failures are still reported via `console.error` so they are not swallowed.
+Unexpected failures are normalized to `AppError` (`src/core/errors.ts`) so raw `unknown` values do not leak into UI. `reportError` is the shared reporting helper: it normalizes and writes `console.error`. Persistence uses `reportError` and does not call `console.error` directly. The React error boundary catches render failures and stores an `AppError`. Phaser host construction failures stay inside the game session: they are logged as `AppError` and reported to React as a typed `GameEvent` (`failed`), not by throwing across the React/Phaser boundary. There is no logging library.
 
 ## Configuration
 
@@ -35,7 +35,13 @@ React must not hold Scene references or poke Phaser internals. Phaser must not i
 
 React UI stays functional. Classes are used for `AppError`, the React error boundary (required by React), Phaser scenes, and the Phaser session wrapper. That is ownership of lifetime and identity, not an application-wide object model.
 
-Routing, client state libraries, persistence, and feature modules are deferred. Capacitor is configured at the repository root. Android and iOS platforms are initialized in `android/` and `ios/` and are committed. Native capability adapters belong behind application-owned contracts when a feature needs them; see the native boundary below.
+## Career state
+
+Career identity is held in one focused Zustand store (`src/shared/career/careerStore.ts`). That store is the authoritative source for the three career slots and the active slot. React Router may carry navigation hints, but it is not career identity.
+
+Persistence is local-device only: a versioned JSON envelope in `localStorage`, read and written exclusively by `src/shared/career/careerPersistence.ts`. Malformed or unsupported stored data falls back to empty career state after a normalized `AppError` is logged. Cloud/backend sync is not implemented. See `docs/DECISIONS/0001-career-state-persistence.md`.
+
+Capacitor is configured at the repository root. Android and iOS platforms are initialized in `android/` and `ios/` and are committed. Native capability adapters belong behind application-owned contracts when a feature needs them; see the native boundary below.
 
 ## Native boundary
 

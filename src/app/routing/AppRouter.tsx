@@ -7,6 +7,7 @@ import { MatchPreparationScreen } from '@/features/matchPreparation/MatchPrepara
 import { ProfileCreateScreen } from '@/features/profileCreate/ProfileCreateScreen';
 import { TeamAssignmentScreen } from '@/features/teamAssignment/TeamAssignmentScreen';
 import { appPaths } from '@/app/routing/appPaths';
+import { RequireActiveCareer } from '@/app/routing/RequireActiveCareer';
 import { Route, Routes } from 'react-router-dom';
 
 export function AppRouter() {
@@ -14,20 +15,53 @@ export function AppRouter() {
     <Routes>
       <Route path={appPaths.entry} element={<EntryScreen />} />
       <Route path={appPaths.careerSelect} element={<CareerSelectScreen />} />
-      <Route path={appPaths.profileCreate} element={<ProfileCreateScreen />} />
+      <Route
+        path={appPaths.profileCreate}
+        element={
+          <RequireActiveCareer>
+            <ProfileCreateScreen />
+          </RequireActiveCareer>
+        }
+      />
       <Route
         path={appPaths.initialTraining}
-        element={<InitialTrainingScreen />}
+        element={
+          <RequireActiveCareer>
+            <InitialTrainingScreen />
+          </RequireActiveCareer>
+        }
       />
       <Route
         path={appPaths.teamAssignment}
-        element={<TeamAssignmentScreen />}
+        element={
+          <RequireActiveCareer>
+            <TeamAssignmentScreen />
+          </RequireActiveCareer>
+        }
       />
-      <Route path={appPaths.gameHome} element={<GameHomeScreen />} />
-      <Route path={appPaths.matchEntry} element={<MatchEntryScreen />} />
+      <Route
+        path={appPaths.gameHome}
+        element={
+          <RequireActiveCareer>
+            <GameHomeScreen />
+          </RequireActiveCareer>
+        }
+      />
+      <Route
+        path={appPaths.matchEntry}
+        element={
+          <RequireActiveCareer>
+            <MatchEntryScreen />
+          </RequireActiveCareer>
+        }
+      />
       <Route
         path={appPaths.matchPreparation}
-        element={<MatchPreparationScreen />}
+        element={
+          <RequireActiveCareer>
+            <MatchPreparationScreen />
+          </RequireActiveCareer>
+        }
       />
     </Routes>
   );

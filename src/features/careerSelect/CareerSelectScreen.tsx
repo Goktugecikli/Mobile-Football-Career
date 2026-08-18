@@ -1,14 +1,15 @@
-import { appPaths, type CareerOnboardingState } from '@/app/routing/appPaths';
+import { appPaths } from '@/app/routing/appPaths';
+import { CAREER_SLOT_IDS } from '@/core/career';
+import { useCareerStore } from '@/shared/career/careerStore';
 import { Button } from '@/shared/ui/Button/Button';
 import { ScreenLayout } from '@/shared/layout/ScreenLayout/ScreenLayout';
 import { useNavigate } from 'react-router-dom';
 import { CareerSlot } from './CareerSlot';
 import styles from './CareerSelectScreen.module.css';
 
-const slotNumbers = [1, 2, 3] as const;
-
 export function CareerSelectScreen() {
   const navigate = useNavigate();
+  const activateSlot = useCareerStore((state) => state.activateSlot);
 
   return (
     <ScreenLayout
@@ -27,13 +28,13 @@ export function CareerSelectScreen() {
       }
     >
       <section className={styles.slots} aria-label="Kariyer slotları">
-        {slotNumbers.map((slotNumber) => (
+        {CAREER_SLOT_IDS.map((slotId) => (
           <CareerSlot
-            key={slotNumber}
-            slotNumber={slotNumber}
+            key={slotId}
+            slotId={slotId}
             onCreate={() => {
-              const state: CareerOnboardingState = { slotNumber };
-              navigate(appPaths.profileCreate, { state });
+              activateSlot(slotId);
+              navigate(appPaths.profileCreate);
             }}
           />
         ))}

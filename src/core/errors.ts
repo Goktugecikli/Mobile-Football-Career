@@ -3,6 +3,7 @@ export const ErrorCode = {
   CONFIG_INVALID: 'CONFIG_INVALID',
   GAME_INIT_FAILED: 'GAME_INIT_FAILED',
   RENDER_FAILED: 'RENDER_FAILED',
+  STORAGE_FAILED: 'STORAGE_FAILED',
 } as const;
 
 export type ErrorCode = (typeof ErrorCode)[keyof typeof ErrorCode];
@@ -52,4 +53,10 @@ export function normalizeError(error: unknown): AppError {
     category: ErrorCategory.APPLICATION,
     cause: error,
   });
+}
+
+export function reportError(error: unknown): AppError {
+  const normalized = normalizeError(error);
+  console.error(normalized);
+  return normalized;
 }

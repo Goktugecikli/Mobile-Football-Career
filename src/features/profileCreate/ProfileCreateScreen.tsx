@@ -1,21 +1,27 @@
 import { appPaths } from '@/app/routing/appPaths';
+import {
+  selectActiveProfile,
+  useCareerStore,
+} from '@/shared/career/careerStore';
 import { Button } from '@/shared/ui/Button/Button';
 import { Card } from '@/shared/ui/Card/Card';
 import { ScreenLayout } from '@/shared/layout/ScreenLayout/ScreenLayout';
-import { useState, type FormEvent } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import type { FormEvent } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styles from './ProfileCreateScreen.module.css';
 
 export function ProfileCreateScreen() {
   const navigate = useNavigate();
-  const location = useLocation();
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
+  const profile = useCareerStore(selectActiveProfile);
+  const updateProfileDraft = useCareerStore((state) => state.updateProfileDraft);
 
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    navigate(appPaths.initialTraining, { state: location.state });
+    navigate(appPaths.initialTraining);
   }
+
+  const firstName = profile?.firstName ?? '';
+  const lastName = profile?.lastName ?? '';
 
   return (
     <ScreenLayout
@@ -35,14 +41,14 @@ export function ProfileCreateScreen() {
     >
       <form className={styles.form} onSubmit={handleSubmit}>
         <Card className={styles.sheet}>
-          <ProfileSelectRow label="Ayak" />
+          <ProfileSelectRow label="Ayak" value={profile?.preferredFoot ?? null} />
           <ProfileTextRow
             id="profile-first-name"
             label="Ad"
             value={firstName}
             autoComplete="given-name"
             enterKeyHint="next"
-            onChange={setFirstName}
+            onChange={(value) => updateProfileDraft({ firstName: value })}
           />
           <ProfileTextRow
             id="profile-last-name"
@@ -50,12 +56,12 @@ export function ProfileCreateScreen() {
             value={lastName}
             autoComplete="family-name"
             enterKeyHint="done"
-            onChange={setLastName}
+            onChange={(value) => updateProfileDraft({ lastName: value })}
           />
-          <ProfileSelectRow label="Cinsiyet" />
-          <ProfileSelectRow label="Mevki" />
-          <ProfileSelectRow label="Lig" />
-          <ProfileSelectRow label="Uyruk" />
+          <ProfileSelectRow label="Cinsiyet" value={profile?.gender ?? null} />
+          <ProfileSelectRow label="Mevki" value={profile?.position ?? null} />
+          <ProfileSelectRow label="Lig" value={profile?.league ?? null} />
+          <ProfileSelectRow label="Uyruk" value={profile?.nationality ?? null} />
         </Card>
 
         <Button fullWidth type="submit" className={styles.continue}>
@@ -68,18 +74,21 @@ export function ProfileCreateScreen() {
 
 type ProfileSelectRowProps = {
   readonly label: string;
+  readonly value: string | null;
 };
 
-function ProfileSelectRow({ label }: ProfileSelectRowProps) {
+function ProfileSelectRow({ label, value }: ProfileSelectRowProps) {
+  const displayValue = value !== null && value.trim() !== '' ? value : 'Seç';
+
   return (
     <div className={styles.row}>
       <span className={styles.fieldLabel}>{label}</span>
       <button
         type="button"
         className={styles.selectControl}
-        aria-label={`${label}, Seç`}
+        aria-label={`${label}, ${displayValue}`}
       >
-        <span className={styles.selectValue}>Seç</span>
+        <span className={styles.selectValue}>{displayValue}</span>
         <span className={styles.chevron} aria-hidden="true">
           ›
         </span>
