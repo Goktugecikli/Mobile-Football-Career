@@ -1,14 +1,15 @@
 import { Badge } from '@/shared/ui/Badge/Badge';
 import { Card } from '@/shared/ui/Card/Card';
+import type { CareerSlotId } from '@/core/career';
 import type { KeyboardEvent } from 'react';
 import styles from './CareerSlot.module.css';
 
 export type CareerSlotProps = {
-  readonly slotNumber: number;
+  readonly slotId: CareerSlotId;
   readonly onCreate: () => void;
 };
 
-export function CareerSlot({ slotNumber, onCreate }: CareerSlotProps) {
+export function CareerSlot({ slotId, onCreate }: CareerSlotProps) {
   function handleKeyDown(event: KeyboardEvent<HTMLElement>) {
     if (event.key === 'Enter' || event.key === ' ') {
       event.preventDefault();
@@ -21,7 +22,7 @@ export function CareerSlot({ slotNumber, onCreate }: CareerSlotProps) {
       className={styles.slot}
       role="button"
       tabIndex={0}
-      aria-label={`Slot ${slotNumber}, yeni kariyer`}
+      aria-label={`Slot ${slotId}, yeni kariyer`}
       onClick={onCreate}
       onKeyDown={handleKeyDown}
     >
@@ -29,7 +30,7 @@ export function CareerSlot({ slotNumber, onCreate }: CareerSlotProps) {
         <span className={styles.plus} aria-hidden="true">
           +
         </span>
-        <span className={styles.slotLabel}>Slot {slotNumber}</span>
+        <span className={styles.slotLabel}>Slot {slotId}</span>
       </div>
 
       <div className={styles.copy}>

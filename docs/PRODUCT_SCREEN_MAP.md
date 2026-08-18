@@ -106,6 +106,7 @@ Choose, create, or remove a career save.
 - Delete confirmation UX
 - Additional career-slot metadata
 - Save preview styling
+- How to present a persisted in-progress career draft that has no assigned team yet
 
 ### `PROFILE_CREATE`
 **Purpose**
@@ -348,6 +349,7 @@ These are product-state areas implied by approved screens and flows. They are re
 - Additional career-slot metadata
 - Save preview styling
 - Existing-career resume details before `GAME_HOME`
+- How to present a persisted in-progress career draft that has no assigned team yet
 
 ### Player creation
 - Exact control type for each field

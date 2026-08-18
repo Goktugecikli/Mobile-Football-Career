@@ -8,7 +8,3 @@ export const appPaths = {
   matchEntry: '/match-entry',
   matchPreparation: '/match-preparation',
 } as const;
-
-export type CareerOnboardingState = {
-  readonly slotNumber: 1 | 2 | 3;
-};

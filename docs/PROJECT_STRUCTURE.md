@@ -14,7 +14,7 @@ nss-v2/
 ├── ios/                     Capacitor iOS platform (committed native source; build requires macOS/Xcode)
 ├── capacitor.config.ts      Capacitor native-shell configuration
 ├── docs/                    Human-readable architecture docs
-│   └── DECISIONS/           ADR-style records (process only, for now)
+│   └── DECISIONS/           ADR-style records
 ├── public/                  Static assets served as-is
 ├── src/
 │   ├── app/                 React composition root
@@ -23,6 +23,7 @@ nss-v2/
 │   ├── features/            Product screen ownership
 │   ├── game/                Phaser host implementation
 │   ├── shared/
+│   │   ├── career/          Career store and local persistence
 │   │   ├── layout/          Reusable screen layout (ScreenLayout)
 │   │   └── ui/              Reusable UI primitives (Button, Card, Badge, etc.)
 │   ├── styles/              Design tokens and global CSS
@@ -47,6 +48,7 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | `src/app/App.tsx` | Composition: error boundary + router + app shell |
 | `src/app/routing/AppRouter.tsx` | Product route mapping for approved screens |
 | `src/app/routing/appPaths.ts` | Authoritative technical route paths for approved screens |
+| `src/app/routing/RequireActiveCareer.tsx` | Redirects to `CAREER_SELECT` when no active career exists |
 | `src/app/AppShell.tsx` | Application shell with optional header/footer chrome slots |
 | `src/shared/layout/ScreenLayout/ScreenLayout.tsx` | Default scrollable screen layout wrapper |
 | `src/app/AppErrorBoundary.tsx` | Render-error boundary |
@@ -54,13 +56,16 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | `src/app/GameHost.tsx` | DOM parent + `GameSession` lifecycle |
 | `src/config/appConfig.ts` | Typed config factory and `appConfig` export |
 | `src/config/orientationPolicy.ts` | Orientation policy location (unset until product decision) |
-| `src/core/errors.ts` | `AppError`, codes, categories, `normalizeError` |
+| `src/core/errors.ts` | `AppError`, codes, categories, `normalizeError`, `reportError` |
+| `src/core/career.ts` | Career slot IDs, profile draft, and career-state contracts |
 | `src/core/gameSession.ts` | Game host contract and event type |
 | `src/game/createPhaserGameSession.ts` | Phaser implementation of `GameSession` |
 | `src/game/HostScene.ts` | Empty host scene used to boot Phaser |
 | `src/styles/tokens.css` | Authoritative design tokens |
 | `src/styles/global.css` | Document reset and token application |
 | `src/shared/ui/*` | Domain-neutral UI primitives |
+| `src/shared/career/careerStore.ts` | Authoritative Zustand career store |
+| `src/shared/career/careerPersistence.ts` | Versioned `localStorage` career persistence |
 | `src/app/BootstrapUiShowcase.tsx` | Temporary bootstrap preview of UI primitives |
 | `src/features/entry/*` | Product-owned `ENTRY` screen |
 | `src/features/careerSelect/*` | Product-owned `CAREER_SELECT` screen and slot UI |

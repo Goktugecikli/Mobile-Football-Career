@@ -62,6 +62,10 @@ Vite exposes only `VITE_`-prefixed variables to client code. Do not put secrets 
 
 Supported variables are listed in `.env.example`. All are optional; `appConfig` supplies defaults when they are unset. Copy `.env.example` to a gitignored `.env` only when you need to override a default. Do not commit `.env` files.
 
+## Career persistence
+
+Career slots and profile drafts persist on-device in `localStorage` under `mfc.career-state`. The career store is authoritative over route state. There is no product reset or delete UI yet. For local testing, clear that storage key or call `clearPersistedCareerState` from `src/shared/career/careerPersistence.ts`. Do not expose that helper in product UI.
+
 ## Git workflow
 
 `main` is the latest validated integrated state. Work on short-lived branches and merge through pull requests so CI runs before integration. This is enough for one developer now and two later.
