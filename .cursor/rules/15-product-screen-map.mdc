@@ -1,0 +1,19 @@
+---
+description: Product screen authority and navigation constraints
+globs: "docs/PRODUCT_SCREEN_MAP.md,src/app/**/*,src/features/**/*,.cursor/rules/*.mdc"
+alwaysApply: true
+---
+
+# Product screen map authority
+
+`docs/PRODUCT_SCREEN_MAP.md` is the authoritative source for approved product screens and approved product navigation.
+
+Do not invent new product screens, navigation items, fields, buttons, flows, or screen-specific features beyond what that document explicitly approves.
+
+When product requirements are missing or ambiguous, record them as open decisions instead of guessing.
+
+Technical infrastructure screens such as bootstrap, not-found, and error handling UI are not product screens unless product requirements explicitly say otherwise.
+
+Changes to the product screen map must be intentional and based on explicit product requirements, not implementation convenience.
+
+Future routing in `src/app/routing` must map approved Screen IDs from `docs/PRODUCT_SCREEN_MAP.md` to technical route paths. Route configuration must not become a second product-definition source.
