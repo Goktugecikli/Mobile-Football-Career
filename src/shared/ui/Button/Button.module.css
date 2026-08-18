@@ -30,7 +30,6 @@
 
 .button:disabled {
   cursor: not-allowed;
-  opacity: 0.56;
 }
 
 .button[data-variant='primary'] {
@@ -40,6 +39,14 @@
 
 .button[data-variant='primary']:not(:disabled):active {
   background: var(--color-accent-strong);
+}
+
+.button[data-variant='primary']:disabled,
+.button[data-variant='secondary']:disabled,
+.button[data-variant='ghost']:disabled {
+  background: var(--color-surface-disabled);
+  border-color: var(--color-border-default);
+  color: var(--color-text-disabled);
 }
 
 .button[data-variant='secondary'] {

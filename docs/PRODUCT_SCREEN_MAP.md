@@ -46,8 +46,8 @@ ENTRY
 ## Screen Inventory
 | Screen ID | Product Name | Type | Previous Screen | Primary Next Screen | Current Implementation Status |
 | --- | --- | --- | --- | --- | --- |
-| `ENTRY` | Entry | Full Screen | None | `CAREER_SELECT` | Specified, Not Implemented |
-| `CAREER_SELECT` | Career Select | Full Screen | `ENTRY` | `PROFILE_CREATE` for empty slot; existing career flow eventually returns to `GAME_HOME` | Specified, Not Implemented |
+| `ENTRY` | Entry | Full Screen | None | `CAREER_SELECT` | Implemented |
+| `CAREER_SELECT` | Career Select | Full Screen | `ENTRY` | `PROFILE_CREATE` for empty slot; existing career flow eventually returns to `GAME_HOME` | Implemented |
 | `PROFILE_CREATE` | Profile Create | Full Screen | `CAREER_SELECT` | `INITIAL_TRAINING` | Specified, Not Implemented |
 | `INITIAL_TRAINING` | Initial Training | Full Screen | `PROFILE_CREATE` | `TEAM_ASSIGNMENT` | Specified, Not Implemented |
 | `TEAM_ASSIGNMENT` | Team Assignment | Full Screen | `INITIAL_TRAINING` | `GAME_HOME` | Specified, Not Implemented |

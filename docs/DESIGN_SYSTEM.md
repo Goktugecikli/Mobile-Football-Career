@@ -2,6 +2,12 @@
 
 Visual and mobile layout decisions live in `src/styles/tokens.css` and `src/styles/global.css`. Tokens are the authoritative design foundation for application UI and future game-adjacent screens.
 
+## Product visual direction
+
+The approved product UI is light, bright, and white-dominant. Screens use near-white surfaces, dark readable typography, blue interactive accents, subtle grey borders, and restrained shadows. The default look is a clean, modern, mobile-first football career game — not a dark cinematic dashboard.
+
+ENTRY may keep immersive key art as its full-screen background. Other product screens follow the light surface system. Dark mode is not part of the current product direction.
+
 ## Semantic token structure
 
 `tokens.css` defines two layers:
@@ -12,9 +18,9 @@ Visual and mobile layout decisions live in `src/styles/tokens.css` and `src/styl
 | Category | Examples | Use for |
 | --- | --- | --- |
 | Background | `--color-bg-app`, `--color-bg-subtle` | Page and shell backgrounds |
-| Surface | `--color-surface-primary`, `--color-surface-inset` | Cards, panels, inset regions |
-| Text | `--color-text-primary`, `--color-text-secondary`, `--color-text-accent` | Copy hierarchy and emphasis |
-| Accent / brand | `--color-accent-primary`, `--color-accent-muted` | Brand emphasis, glows, highlights |
+| Surface | `--color-surface-primary`, `--color-surface-elevated`, `--color-surface-inset`, `--color-surface-disabled` | Cards, panels, inset regions, unavailable controls |
+| Text | `--color-text-primary`, `--color-text-secondary`, `--color-text-disabled`, `--color-text-accent` | Copy hierarchy, disabled copy, and emphasis |
+| Accent / brand | `--color-accent-primary`, `--color-accent-muted`, `--color-action-active` | Brand emphasis and available game-menu actions |
 | Border | `--color-border-default`, `--color-border-focus` | Dividers, outlines, focus rings |
 | Status | `--color-status-success`, `--color-status-danger` | Runtime and feedback states |
 | Typography | `--font-size-md`, `--font-weight-semibold`, `--letter-spacing-wide` | Text style |

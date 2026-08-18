@@ -1,13 +1,16 @@
 import { AppErrorBoundary } from './AppErrorBoundary';
 import { AppShell } from './AppShell';
-import { BootstrapScreen } from './BootstrapScreen';
+import { AppRouter } from './routing/AppRouter';
+import { BrowserRouter } from 'react-router-dom';
 
 export function App() {
   return (
     <AppErrorBoundary>
-      <AppShell>
-        <BootstrapScreen />
-      </AppShell>
+      <BrowserRouter>
+        <AppShell>
+          <AppRouter />
+        </AppShell>
+      </BrowserRouter>
     </AppErrorBoundary>
   );
 }

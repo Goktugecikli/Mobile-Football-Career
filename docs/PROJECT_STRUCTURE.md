@@ -20,6 +20,7 @@ nss-v2/
 │   ├── app/                 React composition root
 │   ├── config/              Validated application configuration
 │   ├── core/                Framework-independent contracts
+│   ├── features/            Product screen ownership
 │   ├── game/                Phaser host implementation
 │   ├── shared/
 │   │   ├── layout/          Reusable screen layout (ScreenLayout)
@@ -43,7 +44,9 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | Path | Role |
 | --- | --- |
 | `src/main.tsx` | Mounts React against `#root` |
-| `src/app/App.tsx` | Composition: error boundary + app shell + bootstrap screen |
+| `src/app/App.tsx` | Composition: error boundary + router + app shell |
+| `src/app/routing/AppRouter.tsx` | Product route mapping for approved screens |
+| `src/app/routing/appPaths.ts` | Authoritative technical route paths for approved screens |
 | `src/app/AppShell.tsx` | Application shell with optional header/footer chrome slots |
 | `src/shared/layout/ScreenLayout/ScreenLayout.tsx` | Default scrollable screen layout wrapper |
 | `src/app/AppErrorBoundary.tsx` | Render-error boundary |
@@ -59,6 +62,8 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | `src/styles/global.css` | Document reset and token application |
 | `src/shared/ui/*` | Domain-neutral UI primitives |
 | `src/app/BootstrapUiShowcase.tsx` | Temporary bootstrap preview of UI primitives |
+| `src/features/entry/*` | Product-owned `ENTRY` screen |
+| `src/features/careerSelect/*` | Product-owned `CAREER_SELECT` screen and slot UI |
 
 ## Intended later locations
 

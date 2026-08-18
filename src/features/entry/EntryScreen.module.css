@@ -1,0 +1,87 @@
+.screen {
+  position: relative;
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  overflow-x: hidden;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background-color: var(--color-bg-app);
+  background-image: url('/Backgrounds/Login_BackGround.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.stage {
+  position: relative;
+  z-index: var(--z-raised);
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  min-height: 0;
+  padding: var(--layout-padding-top) var(--layout-padding-right)
+    var(--layout-padding-bottom) var(--layout-padding-left);
+}
+
+.logo {
+  display: block;
+  align-self: center;
+  width: min(16.5rem, 78%);
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  align-self: flex-end;
+  gap: var(--space-sm);
+  width: min(11.5rem, 42vw);
+  max-width: 46%;
+  padding: var(--space-sm);
+  background: radial-gradient(
+    ellipse 90% 80% at 100% 100%,
+    color-mix(in srgb, var(--color-bg-subtle) 42%, transparent),
+    transparent 72%
+  );
+}
+
+.playCta,
+.idleCta {
+  letter-spacing: var(--letter-spacing-wide);
+  text-transform: uppercase;
+}
+
+.actions .playCta[data-variant='primary'] {
+  background: var(--color-action-active);
+  color: var(--color-text-inverse);
+  box-shadow: var(--shadow-glow-action-active);
+}
+
+.actions .playCta[data-variant='primary']:not(:disabled):active {
+  background: var(--color-action-active-strong);
+}
+
+@media (orientation: landscape) and (max-height: 30rem) {
+  .logo {
+    width: min(13rem, 42vw);
+    align-self: flex-start;
+  }
+
+  .actions {
+    width: min(11rem, 38vw);
+    max-width: 44%;
+  }
+}
