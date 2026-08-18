@@ -46,6 +46,7 @@ Copied web assets under `android/app/src/main/assets/public` and `ios/App/App/pu
 | `src/main.tsx` | Mounts React against `#root` |
 | `src/app/App.tsx` | Composition: error boundary + router + app shell |
 | `src/app/routing/AppRouter.tsx` | Product route mapping for approved screens |
+| `src/app/routing/appPaths.ts` | Authoritative technical route paths for approved screens |
 | `src/app/AppShell.tsx` | Application shell with optional header/footer chrome slots |
 | `src/shared/layout/ScreenLayout/ScreenLayout.tsx` | Default scrollable screen layout wrapper |
 | `src/app/AppErrorBoundary.tsx` | Render-error boundary |

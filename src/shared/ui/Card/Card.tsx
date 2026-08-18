@@ -18,16 +18,26 @@ export function Card({ children, className, ...rest }: CardProps) {
 
 export type CardHeaderProps = {
   readonly children: ReactNode;
+  readonly className?: string;
 };
 
-export function CardHeader({ children }: CardHeaderProps) {
-  return <header className={styles.header}>{children}</header>;
+export function CardHeader({ children, className }: CardHeaderProps) {
+  return (
+    <header className={[styles.header, className].filter(Boolean).join(' ')}>
+      {children}
+    </header>
+  );
 }
 
 export type CardContentProps = {
   readonly children: ReactNode;
+  readonly className?: string;
 };
 
-export function CardContent({ children }: CardContentProps) {
-  return <div className={styles.content}>{children}</div>;
+export function CardContent({ children, className }: CardContentProps) {
+  return (
+    <div className={[styles.content, className].filter(Boolean).join(' ')}>
+      {children}
+    </div>
+  );
 }

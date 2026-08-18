@@ -1,5 +1,5 @@
 :root {
-  color-scheme: dark;
+  color-scheme: light;
 
   /*
    * Raw palette — internal structure only. Component CSS must consume semantic
@@ -13,6 +13,7 @@
   --palette-ink-600: #2e3647;
   --palette-ink-500: #3d4659;
 
+  --palette-paper-0: #ffffff;
   --palette-fog-50: #f4f6fa;
   --palette-fog-100: #e8ebf2;
   --palette-fog-200: #c8cedb;
@@ -23,6 +24,8 @@
   --palette-accent-400: #8b97ff;
   --palette-accent-500: #6f7dff;
   --palette-accent-600: #5563e8;
+  --palette-royal-400: #5478ff;
+  --palette-royal-500: #2f5bff;
 
   --palette-pitch-400: #3ecf8e;
   --palette-amber-400: #e8b84a;
@@ -30,44 +33,49 @@
   --palette-sky-400: #5eb3ff;
 
   /* Background */
-  --color-bg-app: var(--palette-ink-900);
-  --color-bg-subtle: var(--palette-ink-950);
+  --color-bg-app: var(--palette-fog-50);
+  --color-bg-subtle: var(--palette-paper-0);
 
   /* Surface */
-  --color-surface-primary: var(--palette-ink-850);
-  --color-surface-secondary: var(--palette-ink-800);
-  --color-surface-inset: var(--palette-ink-950);
+  --color-surface-primary: var(--palette-paper-0);
+  --color-surface-elevated: var(--palette-paper-0);
+  --color-surface-secondary: var(--palette-fog-100);
+  --color-surface-inset: var(--palette-fog-100);
+  --color-surface-disabled: var(--palette-fog-200);
   --color-surface-overlay: color-mix(
     in srgb,
-    var(--palette-ink-700) 72%,
+    var(--palette-ink-900) 28%,
     transparent
   );
 
   /* Text */
-  --color-text-primary: var(--palette-fog-100);
-  --color-text-secondary: var(--palette-fog-400);
+  --color-text-primary: var(--palette-ink-900);
+  --color-text-secondary: var(--palette-ink-500);
   --color-text-tertiary: var(--palette-fog-600);
-  --color-text-accent: var(--palette-accent-300);
-  --color-text-inverse: var(--palette-ink-950);
+  --color-text-disabled: var(--palette-fog-600);
+  --color-text-accent: var(--palette-royal-500);
+  --color-text-inverse: var(--palette-paper-0);
 
   /* Accent / brand */
-  --color-accent-primary: var(--palette-accent-500);
-  --color-accent-strong: var(--palette-accent-400);
+  --color-accent-primary: var(--palette-royal-500);
+  --color-accent-strong: var(--palette-royal-400);
   --color-accent-muted: color-mix(
     in srgb,
-    var(--palette-accent-500) 16%,
+    var(--palette-royal-500) 12%,
     transparent
   );
+  --color-action-active: var(--palette-royal-500);
+  --color-action-active-strong: var(--palette-royal-400);
 
   /* Border */
-  --color-border-default: var(--palette-ink-600);
+  --color-border-default: var(--palette-fog-200);
   --color-border-subtle: color-mix(
     in srgb,
-    var(--palette-ink-600) 56%,
+    var(--palette-fog-200) 82%,
     transparent
   );
-  --color-border-strong: var(--palette-ink-500);
-  --color-border-focus: var(--palette-accent-400);
+  --color-border-strong: var(--palette-fog-400);
+  --color-border-focus: var(--palette-royal-500);
 
   /* Status */
   --color-status-success: var(--palette-pitch-400);
@@ -119,14 +127,17 @@
   --radius-full: 9999px;
 
   /* Shadow */
-  --shadow-xs: 0 1px 2px rgb(0 0 0 / 0.2);
-  --shadow-sm: 0 2px 8px rgb(0 0 0 / 0.24);
-  --shadow-md: 0 8px 24px rgb(0 0 0 / 0.32);
-  --shadow-lg: 0 16px 40px rgb(0 0 0 / 0.36);
-  --shadow-inset: inset 0 1px 0 rgb(255 255 255 / 0.04);
+  --shadow-xs: 0 1px 2px rgb(15 18 25 / 0.06);
+  --shadow-sm: 0 2px 8px rgb(15 18 25 / 0.08);
+  --shadow-md: 0 8px 24px rgb(15 18 25 / 0.08);
+  --shadow-lg: 0 16px 40px rgb(15 18 25 / 0.1);
+  --shadow-inset: inset 0 1px 0 rgb(255 255 255 / 0.7);
   --shadow-glow-accent: 0 0 0 1px
-      color-mix(in srgb, var(--palette-accent-500) 28%, transparent),
-    0 8px 32px rgb(0 0 0 / 0.36);
+      color-mix(in srgb, var(--color-accent-primary) 18%, transparent),
+    0 8px 20px rgb(15 18 25 / 0.08);
+  --shadow-glow-action-active: 0 0 0 1px
+      color-mix(in srgb, var(--color-action-active) 28%, transparent),
+    0 0 0.85rem color-mix(in srgb, var(--color-action-active) 28%, transparent);
 
   /* Motion */
   --duration-fast: 150ms;

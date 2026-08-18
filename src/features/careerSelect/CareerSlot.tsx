@@ -1,6 +1,6 @@
 import { Badge } from '@/shared/ui/Badge/Badge';
 import { Button } from '@/shared/ui/Button/Button';
-import { Card, CardContent, CardHeader } from '@/shared/ui/Card/Card';
+import { Card } from '@/shared/ui/Card/Card';
 import styles from './CareerSlot.module.css';
 
 export type CareerSlotProps = {
@@ -8,27 +8,28 @@ export type CareerSlotProps = {
 };
 
 export function CareerSlot({ slotNumber }: CareerSlotProps) {
-  const slotIndex = String(slotNumber).padStart(2, '0');
-
   return (
-    <Card className={styles.slot}>
-      <CardHeader>
-        <div className={styles.header}>
-          <span className={styles.slotLabel}>Slot {slotIndex}</span>
-          <Badge variant="neutral">Boş</Badge>
-        </div>
-      </CardHeader>
+    <Card className={styles.slot} aria-label={`Slot ${slotNumber}, boş`}>
+      <div className={styles.lead}>
+        <span className={styles.plus} aria-hidden="true">
+          +
+        </span>
+        <span className={styles.slotLabel}>Slot {slotNumber}</span>
+      </div>
 
-      <CardContent>
-        <div className={styles.preview}>
-          <div className={styles.emptyMark} aria-hidden="true">
-            <span className={styles.plusRing}>+</span>
-          </div>
-        </div>
-        <Button fullWidth variant="secondary" disabled>
-          Yeni Kariyer
-        </Button>
-      </CardContent>
+      <div className={styles.copy}>
+        <p className={styles.actionLabel}>Yeni Kariyer</p>
+        <Badge variant="neutral">Boş</Badge>
+      </div>
+
+      <Button
+        className={styles.forward}
+        variant="ghost"
+        disabled
+        aria-label={`Slot ${slotNumber} için yeni kariyer`}
+      >
+        <span aria-hidden="true">›</span>
+      </Button>
     </Card>
   );
 }

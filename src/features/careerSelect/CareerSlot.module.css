@@ -1,88 +1,76 @@
 .slot {
-  position: relative;
-  overflow: hidden;
+  flex-direction: row;
+  align-items: center;
   gap: var(--space-lg);
   min-width: 0;
-  background:
-    linear-gradient(
-      165deg,
-      color-mix(in srgb, var(--color-accent-muted) 70%, var(--color-surface-secondary))
-        0%,
-      var(--color-surface-primary) 46%,
-      var(--color-surface-primary) 100%
-    );
-  box-shadow: var(--shadow-md), var(--shadow-inset);
+  padding: var(--space-lg);
 }
 
-.slot::before {
-  content: '';
-  position: absolute;
-  inset: 0 0 auto;
-  height: 2px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    color-mix(in srgb, var(--color-accent-strong) 72%, transparent),
-    transparent
-  );
-}
-
-.header {
+.lead {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   gap: var(--space-md);
+  flex-shrink: 0;
   min-width: 0;
+}
+
+.plus {
+  display: grid;
+  place-items: center;
+  width: var(--space-xl);
+  height: var(--space-xl);
+  border: 1px solid color-mix(in srgb, var(--color-accent-primary) 28%, transparent);
+  border-radius: var(--radius-md);
+  background: var(--color-accent-muted);
+  color: var(--color-text-accent);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: 1;
 }
 
 .slotLabel {
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-semibold);
-  letter-spacing: var(--letter-spacing-wider);
+  letter-spacing: var(--letter-spacing-wide);
   text-transform: uppercase;
 }
 
-.preview {
-  display: grid;
+.copy {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-xs);
   min-width: 0;
 }
 
-.emptyMark {
-  display: grid;
-  place-items: center;
-  min-height: calc(var(--space-3xl) * 2 + var(--space-lg));
-  border-radius: var(--radius-lg);
-  background:
-    radial-gradient(
-      circle at 50% 28%,
-      color-mix(in srgb, var(--color-accent-muted) 90%, transparent) 0%,
-      transparent 64%
-    ),
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-surface-secondary) 70%, transparent),
-      var(--color-surface-inset)
-    );
-  box-shadow: var(--shadow-inset);
+.actionLabel {
+  margin: 0;
+  color: var(--color-text-primary);
+  font-size: var(--font-size-md);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-snug);
 }
 
-.plusRing {
-  display: grid;
-  place-items: center;
-  width: var(--space-3xl);
-  height: var(--space-3xl);
-  border: 1px solid color-mix(in srgb, var(--color-accent-strong) 40%, transparent);
-  border-radius: var(--radius-full);
+.slot .forward[data-variant='ghost']:disabled {
+  flex-shrink: 0;
+  width: var(--size-control-min-height);
+  min-width: var(--size-control-min-height);
+  padding: 0;
+  background: var(--color-accent-muted);
+  border-color: transparent;
   color: var(--color-text-accent);
   font-size: var(--font-size-xl);
-  font-weight: var(--font-weight-semibold);
   line-height: 1;
-  box-shadow: var(--shadow-glow-accent);
 }
 
-@media (max-height: 44rem) {
-  .emptyMark {
-    min-height: calc(var(--space-3xl) + var(--space-2xl) + var(--space-sm));
+@media (max-width: 30rem) {
+  .slot {
+    gap: var(--space-md);
+  }
+
+  .slotLabel {
+    font-size: var(--font-size-xs);
   }
 }

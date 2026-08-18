@@ -1,48 +1,31 @@
 .header {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: var(--space-lg);
+  align-items: center;
+  gap: var(--space-md);
 }
 
-.mark {
-  display: grid;
-  place-items: center;
-  width: var(--space-3xl);
-  height: var(--space-3xl);
-  border-radius: var(--radius-md);
-  border: 1px solid color-mix(in srgb, var(--color-accent-strong) 32%, transparent);
-  background:
-    linear-gradient(
-      180deg,
-      color-mix(in srgb, var(--color-accent-muted) 80%, var(--color-surface-secondary)),
-      var(--color-surface-inset)
-    );
-  box-shadow: var(--shadow-glow-accent), var(--shadow-inset);
-}
-
-.markBall {
-  width: 46%;
-  aspect-ratio: 1;
-  border-radius: var(--radius-full);
-  border: 1px solid color-mix(in srgb, var(--color-text-primary) 28%, transparent);
-  background: repeating-conic-gradient(
-    from 20deg,
-    var(--color-surface-inset) 0 30deg,
-    color-mix(in srgb, var(--color-text-primary) 68%, var(--color-surface-primary))
-      30deg 58deg
-  );
+.header .backButton[data-variant='ghost'] {
+  flex-shrink: 0;
+  min-width: var(--size-control-min-height);
+  padding-inline: var(--space-md);
+  border-color: var(--color-border-default);
+  background: var(--color-surface-primary);
+  color: var(--color-text-primary);
 }
 
 .title {
   margin: 0;
-  font-size: clamp(var(--font-size-xl), 5vw, var(--font-size-2xl));
+  min-width: 0;
+  font-size: var(--font-size-lg);
   font-weight: var(--font-weight-bold);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-tight);
 }
 
 .slots {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   gap: var(--space-xl);
+  width: 100%;
+  min-width: 0;
 }
